@@ -1,14 +1,7 @@
-import { createClient } from '@base44/sdk';
-import { appParams } from '@/lib/app-params';
-
-const { appId, token, functionsVersion, appBaseUrl } = appParams;
-
-//Create a client with authentication required
-export const base44 = createClient({
-  appId,
-  token,
-  functionsVersion,
-  serverUrl: '',
-  requiresAuth: false,
-  appBaseUrl
-});
+// Base44 SDK removed. This file is kept as a stub to prevent import errors.
+// All form submissions now go through Cloudflare Workers (/api/submit-quote, /api/submit-career).
+export const base44 = {
+  entities: {},
+  integrations: {},
+  auth: { me: async () => null, logout: () => {}, redirectToLogin: () => {} },
+};

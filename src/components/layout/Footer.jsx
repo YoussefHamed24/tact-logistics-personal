@@ -21,6 +21,7 @@ const footerCompany = [
   { label: "Global Networks",path: "/networks" },
   { label: "Our Clients",    path: "/clients" },
   { label: "Contact Us",     path: "/contact" },
+  { label: "Careers",        path: "/careers" },
 ];
 
 const socialLinks = [

@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Send, CheckCircle2 } from "lucide-react";
-import { base44 } from "@/api/base44Client";
 
 const serviceOptions = [
   { value: "sea_freight", label: "Sea Freight" },
@@ -27,13 +26,25 @@ export default function Quote() {
   });
   const [sending, setSending] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSending(true);
-    await base44.entities.QuoteRequest.create({ ...form, status: "new" });
-    setSending(false);
-    setSubmitted(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/submit-quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, form_type: "quote" }),
+      });
+      if (!res.ok) throw new Error("Submission failed");
+      setSubmitted(true);
+    } catch (err) {
+      setError("Something went wrong. Please try again or email us directly at operation@tactfreight.com");
+    } finally {
+      setSending(false);
+    }
   };
 
   if (submitted) {
@@ -48,7 +59,7 @@ export default function Quote() {
               </div>
               <h2 className="text-2xl font-bold text-primary mb-3">Quote Request Submitted</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Thank you for your inquiry. Our team will review your request and get back to you within 24 hours with a competitive quote.
+                Thank you for your inquiry. Our team will review your request and get back to you within 24 hours.
               </p>
             </motion.div>
           </div>
@@ -60,7 +71,6 @@ export default function Quote() {
   return (
     <>
       <PageHero title="Request a Quote" subtitle="Get a competitive quote tailored to your needs." />
-
       <section className="py-24 bg-background">
         <div className="max-w-3xl mx-auto px-6">
           <motion.div
@@ -71,6 +81,8 @@ export default function Quote() {
             <h3 className="text-2xl font-bold text-primary mb-2">Tell Us About Your Shipment</h3>
             <p className="text-muted-foreground mb-8">Fill in the details below and our team will provide a tailored quote.</p>
 
+            {error && <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">{error}</div>}
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input placeholder="Full Name *" value={form.full_name} onChange={(e) => setForm({ ...form, full_name: e.target.value })} required />
@@ -80,7 +92,6 @@ export default function Quote() {
                 <Input placeholder="Email *" type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required />
                 <Input placeholder="Phone" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
               </div>
-
               <Select value={form.service_type} onValueChange={(value) => setForm({ ...form, service_type: value })}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select Service *" />
@@ -91,15 +102,12 @@ export default function Quote() {
                   ))}
                 </SelectContent>
               </Select>
-
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input placeholder="Origin" value={form.origin} onChange={(e) => setForm({ ...form, origin: e.target.value })} />
                 <Input placeholder="Destination" value={form.destination} onChange={(e) => setForm({ ...form, destination: e.target.value })} />
               </div>
-
               <Textarea placeholder="Cargo Description" rows={3} value={form.cargo_description} onChange={(e) => setForm({ ...form, cargo_description: e.target.value })} />
               <Textarea placeholder="Additional Details or Requirements" rows={3} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} />
-
               <Button type="submit" disabled={sending} className="bg-accent hover:bg-accent/90 text-white w-full py-6 text-base font-semibold">
                 <Send className="w-4 h-4 mr-2" />
                 {sending ? "Submitting..." : "Submit Quote Request"}

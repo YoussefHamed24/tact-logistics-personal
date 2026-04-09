@@ -24,7 +24,8 @@ const navLinks = [
 { label: "Why Us & Industries", path: "/why-us" },
 { label: "Partners & Clients", path: "/company" },
 { label: "Case Studies", path: "/case-studies" },
-{ label: "Contact", path: "/contact" }];
+{ label: "Contact", path: "/contact" },
+{ label: "Careers", path: "/careers" }];
 
 
 export default function Navbar() {
