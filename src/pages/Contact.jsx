@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import PageHero from "../components/shared/PageHero";
 import SectionHeading from "../components/shared/SectionHeading";
@@ -22,6 +22,13 @@ export default function Contact() {
   const [sending, setSending] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(null);
+  const formRef = useRef(null);
+
+  useEffect(() => {
+    if (submitted && formRef.current) {
+      formRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [submitted]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -91,7 +98,7 @@ export default function Contact() {
             </div>
 
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-              <div className="bg-card border border-border/50 rounded-2xl p-8 shadow-sm">
+              <div className="bg-card border border-border/50 rounded-2xl p-8 shadow-sm" ref={formRef}>
                 {submitted ? (
                   <div className="text-center py-8">
                     <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">

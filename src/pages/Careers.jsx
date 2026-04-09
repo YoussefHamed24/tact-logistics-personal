@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PageHero from "../components/shared/PageHero";
 import SectionHeading from "../components/shared/SectionHeading";
@@ -62,6 +62,13 @@ export default function Careers() {
   const [sending, setSending] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(null);
+  const formCardRef = useRef(null);
+
+  useEffect(() => {
+    if (submitted && formCardRef.current) {
+      formCardRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [submitted]);
 
   const openApplication = (job) => {
     setApplyingTo(job);
@@ -206,7 +213,7 @@ export default function Careers() {
             centered
           />
 
-          <div className="mt-10 bg-card border border-border/50 rounded-2xl p-8 shadow-sm">
+          <div className="mt-10 bg-card border border-border/50 rounded-2xl p-8 shadow-sm" ref={formCardRef}>
             {submitted ? (
               <div className="text-center py-8">
                 <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import PageHero from "../components/shared/PageHero";
 import { Button } from "@/components/ui/button";
@@ -27,6 +27,13 @@ export default function Quote() {
   const [sending, setSending] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(null);
+  const topRef = useRef(null);
+
+  useEffect(() => {
+    if (submitted && topRef.current) {
+      topRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [submitted]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,7 +58,7 @@ export default function Quote() {
     return (
       <>
         <PageHero title="Request a Quote" subtitle="Get a competitive quote tailored to your needs." />
-        <section className="py-24 bg-background">
+        <section className="py-24 bg-background" ref={topRef}>
           <div className="max-w-xl mx-auto px-6 text-center">
             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}>
               <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
