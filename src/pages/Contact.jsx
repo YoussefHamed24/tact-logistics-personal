@@ -35,10 +35,10 @@ export default function Contact() {
     setSending(true);
     setError(null);
     try {
-      const res = await fetch("/api/submit-quote", {
+      const res = await fetch("/api/submit-contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, form_type: "contact", service_type: "general" }),
+        body: JSON.stringify(form),
       });
       if (!res.ok) throw new Error("Failed");
       setSubmitted(true);
