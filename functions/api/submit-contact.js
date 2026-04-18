@@ -1,9 +1,19 @@
+import {
+  appendRowToSheet,
+  corsHeaders,
+  getAccessToken,
+  getRowIndexFromAppendResponse,
+  getSheetId,
+  setRowBold,
+} from "./_lib/googleSheets.js";
+
 export async function onRequestPost(context) {
   const { request, env } = context;
 
   try {
     const body = await request.json();
     const token = await getAccessToken(env);
+    const sheetId = await getSheetId(env, token, "Contacts");
     const now = new Date().toLocaleString("en-EG", { timeZone: "Africa/Cairo" });
 
     const row = [
@@ -16,18 +26,18 @@ export async function onRequestPost(context) {
       "New",
     ];
 
-    const res = await fetch(
-      `https://sheets.googleapis.com/v4/spreadsheets/${env.GOOGLE_SHEET_ID}/values/Contacts!A1:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`,
-      {
-        method: "POST",
-        headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-        body: JSON.stringify({ values: [row] }),
-      }
-    );
+    const res = await appendRowToSheet(env, token, "Contacts", row);
 
     if (!res.ok) {
       const err = await res.text();
       return new Response(JSON.stringify({ error: err }), { status: 500, headers: corsHeaders() });
+    }
+
+    const appendResult = await res.json();
+    const rowIndex = getRowIndexFromAppendResponse(appendResult);
+
+    if (rowIndex !== null && sheetId !== null) {
+      await setRowBold(env, token, sheetId, rowIndex, row.length, false);
     }
 
     return new Response(JSON.stringify({ success: true }), { status: 200, headers: corsHeaders() });
@@ -38,43 +48,4 @@ export async function onRequestPost(context) {
 
 export async function onRequestOptions() {
   return new Response(null, { headers: corsHeaders() });
-}
-
-async function getAccessToken(env) {
-  const jwt = await makeJWT(env);
-  const res = await fetch("https://oauth2.googleapis.com/token", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({
-      grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer",
-      assertion: jwt,
-    }),
-  });
-  const data = await res.json();
-  return data.access_token;
-}
-
-async function makeJWT(env) {
-  const header = { alg: "RS256", typ: "JWT" };
-  const now = Math.floor(Date.now() / 1000);
-  const payload = {
-    iss: env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-    scope: "https://www.googleapis.com/auth/spreadsheets",
-    aud: "https://oauth2.googleapis.com/token",
-    exp: now + 3600,
-    iat: now,
-  };
-
-  const enc = (obj) => btoa(JSON.stringify(obj)).replace(/=/g, "").replace(/\+/g, "-").replace(/\//g, "_");
-  const signingInput = `${enc(header)}.${enc(payload)}`;
-  const pem = env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n").replace(/-----BEGIN PRIVATE KEY-----/, "").replace(/-----END PRIVATE KEY-----/, "").replace(/\s/g, "");
-  const der = Uint8Array.from(atob(pem), (c) => c.charCodeAt(0));
-  const key = await crypto.subtle.importKey("pkcs8", der.buffer, { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" }, false, ["sign"]);
-  const sig = await crypto.subtle.sign("RSASSA-PKCS1-v1_5", key, new TextEncoder().encode(signingInput));
-  const sigB64 = btoa(String.fromCharCode(...new Uint8Array(sig))).replace(/=/g, "").replace(/\+/g, "-").replace(/\//g, "_");
-  return `${signingInput}.${sigB64}`;
-}
-
-function corsHeaders() {
-  return { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST, OPTIONS", "Access-Control-Allow-Headers": "Content-Type" };
 }

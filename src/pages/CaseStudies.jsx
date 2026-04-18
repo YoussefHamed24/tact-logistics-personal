@@ -46,7 +46,11 @@ export default function CaseStudies() {
       <PageHero title="Case Studies" subtitle="Real results for real clients." image={HERO_IMG} />
       <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-6">
-          <SectionHeading label="Our Work" title="Client Success Stories" subtitle="A selection of the complex logistics challenges we've solved." />
+          <SectionHeading
+            label="Our Work"
+            title="Client Success Stories"
+            description="A selection of the complex logistics challenges we've solved."
+          />
           <div className="grid md:grid-cols-2 gap-8 mt-12">
             {caseStudies.map((cs, i) => (
               <motion.div
