@@ -21,6 +21,7 @@ const navLinks = [
 { label: "Home", path: "/" },
 { label: "About", path: "/about" },
 { label: "Services", path: "/services", children: serviceItems },
+{ label: "Track", path: "/track" },
 { label: "Why Us & Industries", path: "/why-us" },
 { label: "Partners & Clients", path: "/company" },
 { label: "Case Studies", path: "/case-studies" },
@@ -90,19 +91,19 @@ export default function Navbar() {
       "bg-card/98 backdrop-blur-xl shadow-lg shadow-black/40 border-b border-border" :
       "bg-card border-b border-border"}`
       }>
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+        <div className="max-w-7xl mx-auto px-5 xl:px-6 flex items-center justify-between h-16 gap-4">
 
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group flex-shrink-0">
+          <Link to="/" className="flex items-center group flex-shrink-0 min-w-0">
             <img
               src="/Tact Freight - Logo - Wide - 3.png"
               alt="Tact Freight"
-              className="h-11 w-auto object-contain xl:h-12"
+              className="h-10 w-auto max-w-[185px] object-contain xl:h-11 xl:max-w-[210px]"
             />
           </Link>
 
           {/* Desktop nav links */}
-          <div className="hidden xl:flex items-center gap-0">
+          <div className="hidden xl:flex items-center gap-0 flex-1 justify-center min-w-0">
             {navLinks.map((link) =>
             link.children ?
             <div
@@ -118,7 +119,7 @@ export default function Navbar() {
                 }
               }}>
               
-                  <button className={`flex items-center gap-1 px-3.5 py-2 text-[14px] font-medium transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35 ${
+                  <button className={`flex items-center gap-1 px-3 py-2 text-[13px] font-medium transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35 ${
               isActive("/services") ?
               "text-accent" :
               "text-muted-foreground hover:text-foreground"}`
@@ -175,7 +176,7 @@ export default function Navbar() {
             <Link
               key={link.path}
               to={link.path}
-              className={`relative px-3.5 py-2 text-[14px] font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35 ${
+              className={`relative px-3 py-2 text-[13px] font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35 ${
               isActive(link.path) ?
               "text-accent" :
               "text-muted-foreground hover:text-foreground"}`
@@ -191,10 +192,10 @@ export default function Navbar() {
           </div>
 
           {/* CTA + mobile toggle */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 flex-shrink-0">
             <Link
               to="/quote"
-              className="hidden xl:inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-5 py-2.5 rounded-lg text-[14px] font-semibold transition-all hover:shadow-lg hover:shadow-accent/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35">
+              className="hidden xl:inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-4 py-2.5 rounded-lg text-[13px] font-semibold transition-all hover:shadow-lg hover:shadow-accent/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35 whitespace-nowrap">
               
               Get a Quote
               <ArrowRight className="w-3.5 h-3.5" />

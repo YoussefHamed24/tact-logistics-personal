@@ -24,6 +24,7 @@ import Contact from './pages/Contact';
 import Quote from './pages/Quote';
 import CaseStudies from './pages/CaseStudies';
 import Careers from './pages/Careers';
+import Track from './pages/Track';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
             <Route path="/services/consultancy" element={<Consultancy />} />
             <Route path="/why-us" element={<WhyAndIndustries />} />
             <Route path="/company" element={<Company />} />
+            <Route path="/track" element={<Track />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/quote" element={<Quote />} />
             <Route path="/case-studies" element={<CaseStudies />} />
