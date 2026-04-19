@@ -48,7 +48,7 @@ export default function PageHero({ title, subtitle, image, breadcrumb }) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="flex items-center gap-1.5 text-white/40 text-xs mb-4"
+          className="flex items-center gap-1.5 text-white/62 text-xs mb-4"
         >
           <Link to="/" className="hover:text-white/70 transition-colors flex items-center gap-1">
             <Home className="w-3 h-3" />
@@ -79,7 +79,7 @@ export default function PageHero({ title, subtitle, image, breadcrumb }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.18 }}
-            className="mt-4 text-lg text-white/55 max-w-xl"
+            className="mt-4 text-lg text-white/78 max-w-xl"
           >
             {subtitle}
           </motion.p>

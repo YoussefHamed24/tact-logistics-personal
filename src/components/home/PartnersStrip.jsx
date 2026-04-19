@@ -1,34 +1,46 @@
 import React from "react";
 import { motion } from "framer-motion";
 import SectionHeading from "../shared/SectionHeading";
-
-const partners = [
-  "Maersk", "CMA CGM", "MSC", "Hapag-Lloyd", "ONE", "COSCO",
-  "OOCL", "Unifeeder", "HMM", "PIL", "Yang Ming", "Sidra Line", "ARKAS",
-];
-
-const clients = [
-  "BMW", "Nissan", "Suzuki", "Geely", "Otsuka",
-  "Abou Ghaly Motors", "Mansour", "Mobica", "KG Mobility", "Jushi",
-];
+import { shippingLineLogos, clientLogos } from "../../lib/companyLogos";
 
 function LogoGrid({ items, accent = false }) {
   return (
-    <div className="flex flex-wrap justify-center gap-3">
-      {items.map((name, i) => (
+    <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-4">
+      {items.map((item, i) => (
         <motion.div
-          key={name}
+          key={item.name}
           initial={{ opacity: 0, scale: 0.88 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.3, delay: i * 0.04 }}
-          className={`group relative px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 cursor-default border
+          transition={{ duration: 0.35, delay: i * 0.05 }}
+          className={`group relative overflow-hidden rounded-2xl border p-5 transition-all duration-300
             ${accent
-              ? "bg-accent/5 border-accent/15 text-accent hover:bg-accent/15 hover:border-accent/30"
-              : "bg-muted/60 border-border/40 text-muted-foreground hover:text-primary hover:bg-card hover:border-accent/20 hover:shadow-md"
+              ? "bg-gradient-to-br from-accent/10 via-background to-accent/5 border-accent/15 hover:border-accent/35 hover:shadow-[0_18px_50px_-24px_rgba(239,68,68,0.5)]"
+              : "bg-card/90 border-border/50 hover:border-accent/20 hover:shadow-[0_18px_50px_-24px_rgba(15,23,42,0.4)]"
             }`}
         >
-          {name}
+          <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          <div className="flex min-h-[132px] flex-col justify-between gap-6">
+            {item.hasLogo ? (
+              <div className="flex h-16 items-center justify-center rounded-2xl bg-white shadow-sm ring-1 ring-slate-200/70">
+                <img
+                  src={item.logo}
+                  alt={`${item.name} logo`}
+                  className="max-h-10 w-auto max-w-[78%] object-contain"
+                  loading="lazy"
+                />
+              </div>
+            ) : (
+              <div className="flex h-16 items-center justify-center rounded-2xl border border-dashed border-border/70 bg-muted/45 px-4 text-center shadow-sm">
+                <span className="text-[14px] font-semibold text-muted-foreground">{item.name}</span>
+              </div>
+            )}
+            <div className="text-center">
+              <div className={`text-[15px] font-semibold ${accent ? "text-foreground" : "text-primary"}`}>
+                {item.name}
+              </div>
+            </div>
+          </div>
         </motion.div>
       ))}
     </div>
@@ -45,15 +57,15 @@ export default function PartnersStrip() {
         <SectionHeading
           label="Strategic Partnerships"
           title="Backed by the World's Leading Lines"
-          description="We partner with global shipping leaders to deliver the best rates, routes, and reliability."
+          description="Available companies use local logo assets. Missing ones stay visible as placeholders so the remaining asset gaps are easy to identify."
         />
 
         {/* Partners */}
-        <div className="bg-card border border-border/40 rounded-2xl p-8 mb-12 shadow-sm">
-          <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground mb-6">
+        <div className="rounded-[28px] border border-border/40 bg-card/85 p-8 shadow-[0_24px_80px_-48px_rgba(15,23,42,0.55)] backdrop-blur-sm mb-12">
+          <p className="mb-6 text-center text-xs font-bold uppercase tracking-[0.24em] text-muted-foreground">
             Shipping Line Partners
           </p>
-          <LogoGrid items={partners} />
+          <LogoGrid items={shippingLineLogos} />
         </div>
 
         {/* Divider */}
@@ -64,11 +76,11 @@ export default function PartnersStrip() {
         </div>
 
         {/* Clients */}
-        <div className="bg-gradient-to-br from-accent/5 to-accent/2 border border-accent/15 rounded-2xl p-8 shadow-sm">
-          <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-accent mb-6">
+        <div className="rounded-[28px] border border-accent/15 bg-gradient-to-br from-accent/8 via-background to-accent/5 p-8 shadow-[0_24px_80px_-48px_rgba(239,68,68,0.4)]">
+          <p className="mb-6 text-center text-xs font-bold uppercase tracking-[0.24em] text-accent">
             Trusted by Industry Leaders
           </p>
-          <LogoGrid items={clients} accent />
+          <LogoGrid items={clientLogos} accent />
         </div>
       </div>
     </section>

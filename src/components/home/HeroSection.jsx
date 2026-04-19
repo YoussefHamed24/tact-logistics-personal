@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Phone, ChevronDown, Play } from "lucide-react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, Phone, ChevronDown } from "lucide-react";
+import { useIsMobile } from "../../hooks/use-mobile";
 
 const stats = [
   { num: "25+", label: "Years Experience" },
@@ -12,9 +13,13 @@ const stats = [
 
 // Pexels free-use freight/port videos (no auth needed)
 const VIDEO_URL = "https://videos.pexels.com/video-files/3735869/3735869-uhd_2560_1440_25fps.mp4";
+const HERO_POSTER = "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1920&q=80";
 
 export default function HeroSection() {
   const ref = useRef(null);
+  const isMobile = useIsMobile();
+  const prefersReducedMotion = useReducedMotion();
+  const showVideo = !isMobile && !prefersReducedMotion;
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
@@ -23,13 +28,22 @@ export default function HeroSection() {
     <section ref={ref} className="relative min-h-screen flex flex-col overflow-hidden bg-primary">
       {/* Video background with parallax */}
       <motion.div style={{ y }} className="absolute inset-0">
-        <video
-          autoPlay muted loop playsInline
-          className="w-full h-full object-cover opacity-40"
-          poster="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1920&q=80"
-        >
-          <source src={VIDEO_URL} type="video/mp4" />
-        </video>
+        {showVideo ? (
+          <video
+            autoPlay muted loop playsInline preload="metadata"
+            className="w-full h-full object-cover opacity-40"
+            poster={HERO_POSTER}
+          >
+            <source src={VIDEO_URL} type="video/mp4" />
+          </video>
+        ) : (
+          <img
+            src={HERO_POSTER}
+            alt=""
+            className="w-full h-full object-cover opacity-40"
+            loading="eager"
+          />
+        )}
       </motion.div>
 
       {/* Layered gradients */}
@@ -81,7 +95,7 @@ export default function HeroSection() {
                 />
               </span>
               <br />
-              <span className="text-white/75 text-4xl md:text-5xl lg:text-6xl font-medium">
+              <span className="text-white/88 text-4xl md:text-5xl lg:text-6xl font-medium">
                 Delivered with Trust &amp; Precision.
               </span>
             </motion.h1>
@@ -90,7 +104,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="mt-8 text-lg md:text-xl text-white/55 max-w-xl leading-relaxed"
+              className="mt-8 text-lg md:text-xl text-white max-w-2xl leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]"
             >
               Connecting Egypt to global markets with seamless, end-to-end
               logistics solutions across sea, air, and land.
@@ -101,18 +115,18 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.45 }}
-              className="mt-10 flex flex-wrap gap-4"
+              className="mt-10 flex flex-col sm:flex-row sm:flex-wrap gap-4 max-w-md sm:max-w-none"
             >
               <Link
                 to="/quote"
-                className="group inline-flex items-center gap-2.5 bg-accent hover:bg-accent/90 text-white px-8 py-4 rounded-xl font-semibold text-base transition-all duration-300 hover:shadow-2xl hover:shadow-accent/30 hover:-translate-y-0.5"
+                className="group inline-flex items-center justify-center gap-2.5 bg-accent hover:bg-accent/90 text-white px-8 py-4 rounded-xl font-semibold text-base transition-all duration-300 hover:shadow-2xl hover:shadow-accent/30 hover:-translate-y-0.5"
               >
                 Request a Quote
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2.5 border border-white/20 hover:border-white/40 bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-xl font-semibold text-base transition-all duration-300 backdrop-blur-sm"
+                className="inline-flex items-center justify-center gap-2.5 border border-white/20 hover:border-white/40 bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-xl font-semibold text-base transition-all duration-300 backdrop-blur-sm"
               >
                 <Phone className="w-4 h-4" />
                 Contact Us
@@ -136,7 +150,9 @@ export default function HeroSection() {
                 className={`px-8 py-6 text-center ${i < 3 ? "border-r border-white/10" : ""}`}
               >
                 <div className="text-3xl md:text-4xl font-bold text-accent tracking-tight">{stat.num}</div>
-                <div className="text-xs text-white/45 mt-1 uppercase tracking-wider">{stat.label}</div>
+                <div className="mt-1 text-xs font-medium uppercase tracking-[0.16em] text-white/95 drop-shadow-[0_1px_6px_rgba(0,0,0,0.45)]">
+                  {stat.label}
+                </div>
               </motion.div>
             ))}
           </motion.div>

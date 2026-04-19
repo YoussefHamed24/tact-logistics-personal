@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useId, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, Building2, Globe, Package, TrendingUp } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import PageHero from "../components/shared/PageHero";
 import SectionHeading from "../components/shared/SectionHeading";
 import CTASection from "../components/home/CTASection";
@@ -10,7 +10,7 @@ const HERO_IMG = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w
 const caseStudies = [
   {
     id: 1, client: "Abou Ghaly Motors", industry: "Automotive", service: "RoRo & Sea Freight",
-    img: "https://images.unsplash.com/photo-1574023278095-e0a8c0a28e66?w=900&q=85",
+    img: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=900&q=85",
     challenge: "Importing 500+ vehicles monthly from East Asia and Europe with strict port storage deadlines.",
     result: "30% reduction in port dwell time, zero demurrage fees for 18 consecutive months.",
     tag: "Automotive", tagColor: "bg-blue-500/10 text-blue-600 border-blue-500/20",
@@ -40,6 +40,7 @@ const caseStudies = [
 
 export default function CaseStudies() {
   const [active, setActive] = useState(null);
+  const regionId = useId();
 
   return (
     <>
@@ -59,36 +60,41 @@ export default function CaseStudies() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-card border border-border/50 rounded-2xl overflow-hidden group cursor-pointer"
-                onClick={() => setActive(active === cs.id ? null : cs.id)}
+                className="bg-card border border-border/50 rounded-2xl overflow-hidden group"
               >
                 <div className="relative h-52 overflow-hidden">
-                  <img src={cs.img} alt={cs.client} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <img src={cs.img} alt={cs.client} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-4 left-4">
                     <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${cs.tagColor}`}>{cs.tag}</span>
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-lg font-bold text-primary mb-1">{cs.client}</h3>
-                  <p className="text-sm text-accent font-medium mb-4">{cs.service}</p>
+                  <h3 className="text-xl font-bold text-primary mb-1">{cs.client}</h3>
+                  <p className="text-[15px] text-accent font-medium mb-4">{cs.service}</p>
                   <AnimatePresence>
                     {active === cs.id && (
-                      <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden">
+                      <motion.div id={`${regionId}-${cs.id}`} initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden">
                         <div className="space-y-3 mb-4">
                           <div className="p-3 bg-muted/50 rounded-lg">
                             <p className="text-xs font-bold text-muted-foreground uppercase tracking-wide mb-1">Challenge</p>
-                            <p className="text-sm text-foreground">{cs.challenge}</p>
+                            <p className="text-[15px] text-foreground">{cs.challenge}</p>
                           </div>
                           <div className="p-3 bg-green-50 rounded-lg border border-green-100">
                             <p className="text-xs font-bold text-green-700 uppercase tracking-wide mb-1">Result</p>
-                            <p className="text-sm text-green-800">{cs.result}</p>
+                            <p className="text-[15px] text-green-800">{cs.result}</p>
                           </div>
                         </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
-                  <button className="flex items-center gap-1 text-sm text-accent font-semibold hover:gap-2 transition-all">
+                  <button
+                    type="button"
+                    aria-expanded={active === cs.id}
+                    aria-controls={`${regionId}-${cs.id}`}
+                    onClick={() => setActive(active === cs.id ? null : cs.id)}
+                    className="flex items-center gap-1 text-[15px] text-accent font-semibold hover:gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35 rounded-md"
+                  >
                     {active === cs.id ? "Show less" : "Read more"} <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>

@@ -35,7 +35,7 @@ function StatCounter({ num, label, delay }) {
       className="text-center"
     >
       <div className="text-3xl md:text-4xl font-bold text-accent">{num}</div>
-      <div className="text-xs text-white/50 mt-1 leading-tight uppercase tracking-wider">{label}</div>
+      <div className="text-[11px] text-white/72 mt-1 leading-tight uppercase tracking-wider">{label}</div>
     </motion.div>
   );
 }
@@ -141,7 +141,7 @@ export default function About() {
             <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
               Every Day. Every Port.<br />Every Destination.
             </h2>
-            <p className="mt-5 text-white/55 text-lg max-w-xl mx-auto">
+            <p className="mt-5 text-white/82 text-lg max-w-xl mx-auto">
               Around the clock, our teams manage cargo movements at Egypt's major ports and beyond.
             </p>
           </motion.div>
@@ -190,7 +190,7 @@ export default function About() {
                   <div className="w-6 h-px bg-accent mb-3" />
                   <h3 className="text-xl font-bold text-white">{item.title}</h3>
                 </div>
-                <p className="text-white/65 leading-relaxed">{item.text}</p>
+                <p className="text-white/82 leading-relaxed text-[15px]">{item.text}</p>
               </motion.div>
             ))}
           </div>
@@ -219,8 +219,8 @@ export default function About() {
                   transition={{ delay: i * 0.07 + 0.2, duration: 0.4 }}
                   className="h-px bg-accent mx-auto mb-5"
                 />
-                <h3 className="font-semibold text-primary text-sm mb-2">{v.title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">{v.desc}</p>
+                <h3 className="font-semibold text-primary text-base mb-2">{v.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{v.desc}</p>
               </motion.div>
             ))}
           </div>

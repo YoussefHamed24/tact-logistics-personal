@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
-  Menu, X, ChevronDown, Phone, Mail,
+  Menu, X, ChevronDown,
   Ship, Plane, Truck, FileCheck, Warehouse, Cog, CarFront, MessageSquare, ArrowRight } from
 "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -33,6 +33,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const servicesMenuRef = useRef(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -45,6 +46,17 @@ export default function Navbar() {
     setMobileOpen(false);
     setServicesOpen(false);
   }, [location]);
+
+  useEffect(() => {
+    const handlePointerDown = (event) => {
+      if (servicesMenuRef.current && !servicesMenuRef.current.contains(event.target)) {
+        setServicesOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handlePointerDown);
+    return () => document.removeEventListener("mousedown", handlePointerDown);
+  }, []);
 
   const isActive = (path) => {
     if (path === "/") return location.pathname === "/";
@@ -82,10 +94,11 @@ export default function Navbar() {
 
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group flex-shrink-0">
-            <span className="text-[18px] font-extrabold tracking-tight">
-              <span className="text-accent">TACT</span>
-              <span className="text-foreground"> FREIGHT</span>
-            </span>
+            <img
+              src="/Tact Freight - Logo - Wide - 3.png"
+              alt="Tact Freight"
+              className="h-11 w-auto object-contain xl:h-12"
+            />
           </Link>
 
           {/* Desktop nav links */}
@@ -94,15 +107,28 @@ export default function Navbar() {
             link.children ?
             <div
               key={link.label}
+              ref={servicesMenuRef}
               className="relative"
               onMouseEnter={() => setServicesOpen(true)}
-              onMouseLeave={() => setServicesOpen(false)}>
+              onMouseLeave={() => setServicesOpen(false)}
+              onFocus={() => setServicesOpen(true)}
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget)) {
+                  setServicesOpen(false);
+                }
+              }}>
               
-                  <button className={`flex items-center gap-1 px-3.5 py-2 text-[13px] font-medium transition-colors rounded-md ${
+                  <button className={`flex items-center gap-1 px-3.5 py-2 text-[14px] font-medium transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35 ${
               isActive("/services") ?
               "text-accent" :
               "text-muted-foreground hover:text-foreground"}`
-              }>
+              }
+                  aria-haspopup="menu"
+                  aria-expanded={servicesOpen}
+                  onClick={() => setServicesOpen((open) => !open)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Escape") setServicesOpen(false);
+                  }}>
                     {link.label}
                     <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`} />
                   </button>
@@ -149,7 +175,7 @@ export default function Navbar() {
             <Link
               key={link.path}
               to={link.path}
-              className={`relative px-3.5 py-2 text-[13px] font-medium rounded-md transition-colors ${
+              className={`relative px-3.5 py-2 text-[14px] font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35 ${
               isActive(link.path) ?
               "text-accent" :
               "text-muted-foreground hover:text-foreground"}`
@@ -168,13 +194,13 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               to="/quote"
-              className="hidden xl:inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-5 py-2.5 rounded-lg text-[13px] font-semibold transition-all hover:shadow-lg hover:shadow-accent/30">
+              className="hidden xl:inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-5 py-2.5 rounded-lg text-[14px] font-semibold transition-all hover:shadow-lg hover:shadow-accent/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35">
               
               Get a Quote
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
             <button
-              className="xl:hidden p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+              className="xl:hidden p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35"
               onClick={() => setMobileOpen(!mobileOpen)}>
               
               {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -199,7 +225,7 @@ export default function Navbar() {
                 <>
                         <button
                     onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                    className="w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted transition-colors">
+                    className="w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35">
                     
                           {link.label}
                           <ChevronDown className={`w-4 h-4 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`} />
@@ -216,7 +242,7 @@ export default function Navbar() {
                       <Link
                         key={child.path}
                         to={child.path}
-                        className="flex items-center gap-2.5 px-2 py-2 text-sm text-muted-foreground hover:text-accent rounded-lg hover:bg-muted transition-colors">
+                        className="flex items-center gap-2.5 px-2 py-2 text-sm text-muted-foreground hover:text-accent rounded-lg hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35">
                         
                                   <child.icon className="w-4 h-4 text-accent/60" />
                                   {child.label}
@@ -229,7 +255,7 @@ export default function Navbar() {
 
                 <Link
                   to={link.path}
-                  className={`block px-3 py-2.5 text-sm font-medium rounded-lg transition-colors ${
+                  className={`block px-3 py-2.5 text-sm font-medium rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35 ${
                   isActive(link.path) ?
                   "text-accent bg-accent/10" :
                   "text-muted-foreground hover:text-foreground hover:bg-muted"}`
@@ -244,7 +270,7 @@ export default function Navbar() {
                 <div className="pt-3 mt-2 border-t border-border">
                   <Link
                   to="/quote"
-                  className="flex items-center justify-center gap-2 bg-accent text-white py-3 rounded-xl font-semibold text-sm">
+                  className="flex items-center justify-center gap-2 bg-accent text-white py-3 rounded-xl font-semibold text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35">
                   
                     Get a Quote <ArrowRight className="w-4 h-4" />
                   </Link>

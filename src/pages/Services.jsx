@@ -42,18 +42,19 @@ export default function Services() {
                 >
                   <div className="h-52 md:h-auto overflow-hidden relative">
                     <img src={svc.img} alt={svc.title}
+                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 min-h-[200px]" />
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/20 md:bg-gradient-to-r md:from-transparent md:to-card/30" />
                   </div>
-                  <div className="p-8 flex flex-col justify-center">
+                  <div className="p-8 md:p-9 flex flex-col justify-center">
                     <div className="w-8 h-px bg-accent mb-4 group-hover:w-14 transition-all duration-300" />
-                    <h3 className="text-xl font-bold text-primary mb-2">{svc.title}</h3>
+                    <h3 className="text-2xl font-bold text-primary mb-3">{svc.title}</h3>
                     <AIServiceDescription
                       serviceTitle={svc.title}
                       defaultDesc={svc.desc}
                       keywords={svc.keywords}
                     />
-                    <span className="inline-flex items-center gap-1.5 text-sm text-accent font-medium group-hover:gap-3 transition-all mt-5">
+                    <span className="inline-flex items-center gap-1.5 text-[15px] text-accent font-medium group-hover:gap-3 transition-all mt-5">
                       Learn more <ArrowRight className="w-4 h-4" />
                     </span>
                   </div>

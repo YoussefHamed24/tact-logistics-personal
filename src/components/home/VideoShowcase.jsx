@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useIsMobile } from "../../hooks/use-mobile";
 
 // Free pexels freight-industry clips
 const clips = [
@@ -25,6 +26,9 @@ const clips = [
 
 export default function VideoShowcase() {
   const ref = useRef(null);
+  const isMobile = useIsMobile();
+  const prefersReducedMotion = useReducedMotion();
+  const showVideo = !isMobile && !prefersReducedMotion;
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
 
@@ -72,13 +76,22 @@ export default function VideoShowcase() {
               className="group relative rounded-2xl overflow-hidden"
               style={{ height: i === 1 ? "420px" : "340px" }}
             >
-              <video
-                autoPlay muted loop playsInline
-                poster={clip.poster}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              >
-                <source src={clip.video} type="video/mp4" />
-              </video>
+              {showVideo ? (
+                <video
+                  autoPlay muted loop playsInline preload="metadata"
+                  poster={clip.poster}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                >
+                  <source src={clip.video} type="video/mp4" />
+                </video>
+              ) : (
+                <img
+                  src={clip.poster}
+                  alt=""
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/30 to-transparent" />
               <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/5 transition-colors duration-500" />
               <div className="absolute bottom-0 left-0 right-0 p-6">

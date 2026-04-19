@@ -71,8 +71,8 @@ export default function WhyAndIndustries() {
                 </div>
                 <div className="p-7 flex flex-col justify-center">
                   <div className="w-8 h-px bg-accent mb-4 group-hover:w-14 transition-all duration-300" />
-                  <h3 className="text-lg font-bold text-primary mb-2 group-hover:text-accent transition-colors">{p.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed text-sm">{p.desc}</p>
+                  <h3 className="text-xl font-bold text-primary mb-2 group-hover:text-accent transition-colors">{p.title}</h3>
+                  <p className="text-[15px] text-muted-foreground leading-relaxed">{p.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -102,7 +102,7 @@ export default function WhyAndIndustries() {
                 <h3 className="text-lg font-bold text-primary mb-4">{ind.title}</h3>
                 <ul className="space-y-2">
                   {ind.points.map((point) => (
-                    <li key={point} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <li key={point} className="flex items-start gap-2 text-[15px] text-muted-foreground">
                       <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
                       <span className="leading-relaxed">{point}</span>
                     </li>

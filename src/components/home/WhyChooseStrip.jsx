@@ -1,6 +1,6 @@
 import React from "react";
-import { motion } from "framer-motion";
-import SectionHeading from "../shared/SectionHeading";
+import { motion, useReducedMotion } from "framer-motion";
+import { useIsMobile } from "../../hooks/use-mobile";
 
 const VIDEO_URL = "https://videos.pexels.com/video-files/2790396/2790396-uhd_2560_1440_25fps.mp4";
 const NETWORK_IMG = "https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?w=1920&q=90";
@@ -14,6 +14,10 @@ const pillars = [
 ];
 
 export default function WhyChooseStrip() {
+  const isMobile = useIsMobile();
+  const prefersReducedMotion = useReducedMotion();
+  const showVideo = !isMobile && !prefersReducedMotion;
+
   return (
     <section className="py-0 bg-background overflow-hidden">
       {/* Video split + pillars */}
@@ -26,13 +30,22 @@ export default function WhyChooseStrip() {
           transition={{ duration: 0.7 }}
           className="relative overflow-hidden"
         >
-          <video
-            autoPlay muted loop playsInline
-            poster="https://images.unsplash.com/photo-1493946740644-2d8a1f1a6aff?w=1400&q=90"
-            className="w-full h-full object-cover min-h-[400px]"
-          >
-            <source src={VIDEO_URL} type="video/mp4" />
-          </video>
+          {showVideo ? (
+            <video
+              autoPlay muted loop playsInline preload="metadata"
+              poster="https://images.unsplash.com/photo-1493946740644-2d8a1f1a6aff?w=1400&q=90"
+              className="w-full h-full object-cover min-h-[400px]"
+            >
+              <source src={VIDEO_URL} type="video/mp4" />
+            </video>
+          ) : (
+            <img
+              src="https://images.unsplash.com/photo-1493946740644-2d8a1f1a6aff?w=1400&q=90"
+              alt=""
+              loading="lazy"
+              className="w-full h-full object-cover min-h-[400px]"
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/40 to-transparent" />
           <div className="absolute inset-0 flex flex-col justify-end p-10">
             <motion.span

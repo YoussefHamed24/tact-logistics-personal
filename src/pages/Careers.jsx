@@ -121,8 +121,8 @@ export default function Careers() {
                 <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mx-auto mb-4">
                   <p.icon className="w-6 h-6 text-accent" />
                 </div>
-                <h4 className="font-bold text-primary mb-2">{p.title}</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+                <h4 className="font-bold text-primary text-lg mb-2">{p.title}</h4>
+                <p className="text-[15px] text-muted-foreground leading-relaxed">{p.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -154,12 +154,12 @@ export default function Careers() {
                         {job.type}
                       </span>
                     </div>
-                    <h3 className="font-bold text-primary text-lg">{job.title}</h3>
+                    <h3 className="font-bold text-primary text-xl">{job.title}</h3>
                     <div className="flex items-center gap-4 mt-2">
-                      <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                      <span className="flex items-center gap-1 text-[13px] text-muted-foreground">
                         <MapPin className="w-3.5 h-3.5" />{job.location}
                       </span>
-                      <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                      <span className="flex items-center gap-1 text-[13px] text-muted-foreground">
                         <Clock className="w-3.5 h-3.5" />{job.type}
                       </span>
                     </div>
@@ -177,11 +177,11 @@ export default function Careers() {
                       className="overflow-hidden"
                     >
                       <div className="px-6 pb-6 border-t border-border/50 pt-5">
-                        <p className="text-sm text-muted-foreground leading-relaxed mb-5">{job.description}</p>
-                        <h4 className="text-sm font-bold text-primary mb-3">Requirements</h4>
+                        <p className="text-[15px] text-muted-foreground leading-relaxed mb-5">{job.description}</p>
+                        <h4 className="text-[15px] font-bold text-primary mb-3">Requirements</h4>
                         <ul className="space-y-2 mb-6">
                           {job.requirements.map((r, ri) => (
-                            <li key={ri} className="flex items-start gap-2 text-sm text-muted-foreground">
+                            <li key={ri} className="flex items-start gap-2 text-[15px] text-muted-foreground">
                               <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
                               {r}
                             </li>
@@ -213,7 +213,7 @@ export default function Careers() {
             centered
           />
 
-          <div className="mt-10 bg-card border border-border/50 rounded-2xl p-8 shadow-sm" ref={formCardRef}>
+          <div className="mt-10 bg-card border border-border/50 rounded-2xl p-8 md:p-10 shadow-[0_24px_80px_-48px_rgba(15,23,42,0.35)]" ref={formCardRef}>
             {submitted ? (
               <div className="text-center py-8">
                 <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
@@ -237,12 +237,12 @@ export default function Careers() {
                 )}
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <Input placeholder="Full Name *" value={form.full_name} onChange={(e) => setForm({ ...form, full_name: e.target.value })} required />
-                    <Input placeholder="Email *" type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required />
+                    <Input className="h-11" placeholder="Full Name *" value={form.full_name} onChange={(e) => setForm({ ...form, full_name: e.target.value })} required />
+                    <Input className="h-11" placeholder="Email *" type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required />
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <Input placeholder="Phone *" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} required />
-                    <Input placeholder="LinkedIn profile URL" value={form.linkedin} onChange={(e) => setForm({ ...form, linkedin: e.target.value })} />
+                    <Input className="h-11" placeholder="Phone *" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} required />
+                    <Input className="h-11" placeholder="LinkedIn profile URL" value={form.linkedin} onChange={(e) => setForm({ ...form, linkedin: e.target.value })} />
                   </div>
 
                   <Select value={form.position} onValueChange={(v) => setForm({ ...form, position: v })}>
@@ -278,9 +278,9 @@ export default function Careers() {
                     required
                   />
 
-                  <p className="text-xs text-muted-foreground">
-                    After submitting, our HR team will contact you to request your CV and any further documents.
-                  </p>
+                    <p className="text-sm text-muted-foreground">
+                      After submitting, our HR team will contact you to request your CV and any further documents.
+                    </p>
 
                   <Button type="submit" disabled={sending} className="bg-accent hover:bg-accent/90 text-white w-full py-6 text-base font-semibold">
                     <Send className="w-4 h-4 mr-2" />

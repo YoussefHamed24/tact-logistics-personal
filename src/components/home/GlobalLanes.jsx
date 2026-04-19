@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import SectionHeading from "../shared/SectionHeading";
 
 const regions = [
@@ -36,8 +36,6 @@ const regions = [
 ];
 
 export default function GlobalLanes() {
-  const [active, setActive] = useState(null);
-
   return (
     <section className="py-28 bg-muted/40">
       <div className="max-w-7xl mx-auto px-6">
@@ -47,7 +45,7 @@ export default function GlobalLanes() {
           description="Our network spans six continents, ensuring your cargo reaches any destination worldwide."
         />
 
-        {/* Tall stacked cards for desktop, scrollable on mobile */}
+        {/* Region cards with always-readable detail */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {regions.map((r, i) => (
             <motion.div
@@ -56,45 +54,31 @@ export default function GlobalLanes() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              onHoverStart={() => setActive(r.name)}
-              onHoverEnd={() => setActive(null)}
               className="group relative rounded-2xl overflow-hidden cursor-default"
-              style={{ height: "320px" }}
+              style={{ minHeight: "360px" }}
             >
               <motion.img
                 src={r.img}
                 alt={r.name}
-                animate={{ scale: active === r.name ? 1.1 : 1 }}
+                loading="lazy"
+                whileHover={{ scale: 1.06 }}
                 transition={{ duration: 0.6 }}
                 className="absolute inset-0 w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/55 to-primary/15" />
 
-              {/* Always visible */}
               <div className="absolute bottom-0 left-0 right-0 p-5">
                 <div className="w-5 h-px bg-accent mb-2" />
                 <h3 className="font-bold text-white text-lg mb-1">{r.name}</h3>
-                <p className="text-xs text-white/60 leading-relaxed">{r.desc}</p>
-
-                {/* Hover reveal */}
-                <AnimatePresence>
-                  {active === r.name && (
-                    <motion.p
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.25 }}
-                      className="text-xs text-accent/90 mt-2 leading-relaxed overflow-hidden"
-                    >
-                      {r.detail}
-                    </motion.p>
-                  )}
-                </AnimatePresence>
+                <p className="text-sm text-white/75 leading-relaxed">{r.desc}</p>
+                <p className="text-xs text-accent/95 mt-3 leading-relaxed">
+                  {r.detail}
+                </p>
               </div>
 
-              {/* Top accent border on hover */}
               <motion.div
-                animate={{ scaleX: active === r.name ? 1 : 0 }}
+                whileHover={{ scaleX: 1 }}
+                initial={{ scaleX: 0 }}
                 transition={{ duration: 0.3 }}
                 className="absolute top-0 left-0 right-0 h-0.5 bg-accent origin-left"
               />

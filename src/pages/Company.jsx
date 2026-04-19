@@ -4,14 +4,9 @@ import { Globe } from "lucide-react";
 import PageHero from "../components/shared/PageHero";
 import SectionHeading from "../components/shared/SectionHeading";
 import CTASection from "../components/home/CTASection";
+import { shippingLineLogos, clientLogos } from "../lib/companyLogos";
 
 const HERO_IMG = "https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?w=1920&q=95";
-
-const shippingLines = [
-  "Maersk", "CMA CGM", "MSC", "Hapag-Lloyd", "ONE (Ocean Network Express)",
-  "COSCO Shipping", "OOCL", "Unifeeder", "HMM (Hyundai Merchant Marine)",
-  "PIL (Pacific International Lines)", "Yang Ming", "Sidra Line", "ARKAS",
-];
 
 const networks = [
   { name: "IATA", full: "International Air Transport Association", desc: "Globally recognized accreditation enabling direct partnerships with airlines for air cargo operations worldwide." },
@@ -21,11 +16,35 @@ const networks = [
   { name: "Freightnet", full: "Freightnet International", desc: "Part of an exclusive international network connecting freight forwarders for seamless cross-border logistics operations." },
 ];
 
-const clients = [
-  "BMW", "Nissan", "Suzuki", "Geely", "Otsuka",
-  "Abou Ghaly Motors", "Mansour Group", "Mobica",
-  "KG Mobility", "Jushi", "GB Auto", "Al-Futtaim",
-];
+function LogoCard({ item, index }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.04 }}
+      className="group rounded-[26px] border border-border/50 bg-card/95 p-6 shadow-[0_20px_60px_-42px_rgba(15,23,42,0.42)] transition-all hover:-translate-y-1 hover:border-accent/20 hover:shadow-[0_28px_80px_-42px_rgba(239,68,68,0.26)]"
+    >
+      {item.hasLogo ? (
+        <div className="flex h-24 items-center justify-center rounded-2xl bg-white px-6 shadow-sm ring-1 ring-slate-200/80">
+          <img
+            src={item.logo}
+            alt={`${item.name} logo`}
+            className="max-h-12 w-auto max-w-full object-contain"
+            loading="lazy"
+          />
+        </div>
+      ) : (
+        <div className="flex h-24 items-center justify-center rounded-2xl border border-dashed border-border/70 bg-muted/45 px-6 text-center shadow-sm">
+          <span className="text-lg font-semibold text-muted-foreground">{item.name}</span>
+        </div>
+      )}
+      <div className="mt-5 text-center">
+        <h3 className="text-base font-semibold text-primary">{item.name}</h3>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function Company() {
   return (
@@ -42,26 +61,11 @@ export default function Company() {
           <SectionHeading
             label="Our Partners"
             title="Backed by Industry Leaders"
-            description="Our partnerships with the world's top shipping lines ensure preferential rates, guaranteed space, and unmatched service quality."
+            description="Companies with downloaded local logos are shown as image cards. Missing assets remain in place as placeholders so the list stays complete."
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {shippingLines.map((name, i) => (
-              <motion.div
-                key={name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.04 }}
-                className="bg-card border border-border/50 rounded-xl p-5 flex items-center gap-4 hover:border-accent/20 hover:shadow-md transition-all"
-              >
-                <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
-                  <span className="text-accent font-bold text-lg">{name[0]}</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-primary text-sm">{name}</h3>
-                  <p className="text-xs text-muted-foreground">Strategic Shipping Partner</p>
-                </div>
-              </motion.div>
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-5">
+            {shippingLineLogos.map((item, i) => (
+              <LogoCard key={item.name} item={item} index={i} />
             ))}
           </div>
         </div>
@@ -103,25 +107,11 @@ export default function Company() {
           <SectionHeading
             label="Key Clients"
             title="Trusted by the Best"
-            description="We proudly serve some of the world's most recognized brands across diverse industries."
+            description="Current local logo coverage plus clear placeholders for client brands that still need proper high-resolution assets."
           />
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
-            {clients.map((name, i) => (
-              <motion.div
-                key={name}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.04 }}
-                className="bg-card border border-border/50 rounded-xl p-6 flex items-center justify-center text-center hover:border-accent/20 hover:shadow-md transition-all"
-              >
-                <div>
-                  <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-3">
-                    <span className="text-accent font-bold text-xl">{name[0]}</span>
-                  </div>
-                  <h3 className="font-semibold text-primary text-sm">{name}</h3>
-                </div>
-              </motion.div>
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-5">
+            {clientLogos.map((item, i) => (
+              <LogoCard key={item.name} item={item} index={i} />
             ))}
           </div>
         </div>

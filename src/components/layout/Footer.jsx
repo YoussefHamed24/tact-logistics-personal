@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, ArrowRight, Ship, Globe } from "lucide-react";
+import { Phone, Mail, MapPin, ArrowRight, Globe, Linkedin, Facebook } from "lucide-react";
 
 const footerServices = [
   { label: "Sea Freight",       path: "/services/sea-freight" },
@@ -26,6 +26,11 @@ const footerCompany = [
 const badges = ["IATA Accredited", "FIATA Member", "DP World Alliance", "Cairo, Egypt"];
 
 export default function Footer() {
+  const socialLinks = [
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/tactfreight/", icon: Linkedin },
+    { label: "Facebook", href: "https://www.facebook.com/share/1bieXqfQ9J/?mibextid=wwXIfr", icon: Facebook },
+  ];
+
   return (
     <footer className="bg-[hsl(218,62%,8%)] text-white relative overflow-hidden">
 
@@ -41,49 +46,25 @@ export default function Footer() {
       {/* Glow orbs */}
       <div className="absolute top-0 right-0 w-[600px] h-[400px] bg-accent/6 rounded-full blur-[150px] pointer-events-none" />
 
-      {/* ── CTA Band ──────────────────────────────────────────── */}
-      <div className="relative border-b border-white/8">
-        <div className="max-w-7xl mx-auto px-6 py-10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-accent/10 border border-accent/20 rounded-2xl px-8 py-7">
-            <div className="flex items-center gap-5">
-              <div className="w-12 h-12 rounded-xl bg-accent/20 border border-accent/30 flex items-center justify-center flex-shrink-0">
-                <Ship className="w-5 h-5 text-accent" />
-              </div>
-              <div>
-                <h3 className="text-lg font-bold text-white">Ready to move your cargo?</h3>
-                <p className="text-white/50 text-sm mt-0.5">Competitive quotes within 24 hours — sea, air, land & more.</p>
-              </div>
-            </div>
-            <Link
-              to="/quote"
-              className="group flex-shrink-0 inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-7 py-3 rounded-xl text-sm font-semibold transition-all hover:shadow-xl hover:shadow-accent/40"
-            >
-              Request a Quote
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </Link>
-          </div>
-        </div>
-      </div>
-
       {/* ── Main grid ─────────────────────────────────────────── */}
-      <div className="relative max-w-7xl mx-auto px-6 pt-14 pb-10">
+      <div className="relative max-w-7xl mx-auto px-6 pt-16 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-14">
 
           {/* Brand */}
           <div>
             <Link to="/" className="inline-flex items-center gap-3 mb-6 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-accent to-blue-700 flex items-center justify-center shadow-md shadow-accent/30">
-                <span className="text-white font-extrabold text-sm">TF</span>
+              <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-md shadow-accent/20 overflow-hidden p-1">
+                <img src="/favicon.png" alt="Tact Freight logo" className="w-full h-full object-contain" />
               </div>
               <div>
-                <div className="text-base font-bold text-white">Tact Freight</div>
-                <div className="text-[9px] uppercase tracking-[0.22em] text-white/35 font-medium">
+                <div className="text-lg font-bold text-white">Tact Freight</div>
+                <div className="text-[10px] uppercase tracking-[0.22em] text-white/55 font-medium">
                   Global Freight Forwarding
                 </div>
               </div>
             </Link>
 
-            <p className="text-[13px] text-white/45 leading-relaxed mb-8 max-w-xs">
+            <p className="text-[15px] text-white/72 leading-relaxed mb-8 max-w-sm">
               A reputation-driven freight forwarder headquartered in Cairo, Egypt — connecting businesses to global markets with reliability, transparency, and speed.
             </p>
 
@@ -98,7 +79,7 @@ export default function Footer() {
                   <div className="w-7 h-7 rounded-lg bg-white/5 group-hover:bg-accent/20 flex items-center justify-center flex-shrink-0 transition-colors mt-0.5">
                     <Icon className="w-3.5 h-3.5 text-accent" />
                   </div>
-                  <span className="text-[12px] text-white/45 group-hover:text-white/70 transition-colors leading-snug pt-0.5">{text}</span>
+                  <span className="text-[14px] text-white/72 group-hover:text-white transition-colors leading-snug pt-0.5">{text}</span>
                 </a>
               ))}
             </div>
@@ -106,7 +87,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-[10px] font-bold uppercase tracking-[0.22em] text-accent/60 mb-5 flex items-center gap-2">
+            <h4 className="text-[11px] font-bold uppercase tracking-[0.22em] text-accent/75 mb-5 flex items-center gap-2">
               <span className="w-3 h-px bg-accent/40" />
               Services
             </h4>
@@ -115,7 +96,7 @@ export default function Footer() {
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="group flex items-center gap-2 text-[13px] text-white/45 hover:text-white transition-colors"
+                    className="group flex items-center gap-2 text-[15px] text-white/72 hover:text-white transition-colors"
                   >
                     <span className="w-1 h-1 rounded-full bg-accent/30 group-hover:bg-accent transition-colors flex-shrink-0" />
                     {link.label}
@@ -127,7 +108,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="text-[10px] font-bold uppercase tracking-[0.22em] text-accent/60 mb-5 flex items-center gap-2">
+            <h4 className="text-[11px] font-bold uppercase tracking-[0.22em] text-accent/75 mb-5 flex items-center gap-2">
               <span className="w-3 h-px bg-accent/40" />
               Company
             </h4>
@@ -136,7 +117,7 @@ export default function Footer() {
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="group flex items-center gap-2 text-[13px] text-white/45 hover:text-white transition-colors"
+                    className="group flex items-center gap-2 text-[15px] text-white/72 hover:text-white transition-colors"
                   >
                     <span className="w-1 h-1 rounded-full bg-accent/30 group-hover:bg-accent transition-colors flex-shrink-0" />
                     {link.label}
@@ -148,7 +129,7 @@ export default function Footer() {
 
           {/* Connect */}
           <div>
-            <h4 className="text-[10px] font-bold uppercase tracking-[0.22em] text-accent/60 mb-5 flex items-center gap-2">
+            <h4 className="text-[11px] font-bold uppercase tracking-[0.22em] text-accent/75 mb-5 flex items-center gap-2">
               <span className="w-3 h-px bg-accent/40" />
               Contact Channels
             </h4>
@@ -161,7 +142,7 @@ export default function Footer() {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="group flex items-center gap-2 text-[13px] text-white/45 hover:text-white transition-colors"
+                  className="group flex items-center gap-2 text-[15px] text-white/72 hover:text-white transition-colors"
                 >
                   <span className="w-1 h-1 rounded-full bg-accent/30 group-hover:bg-accent transition-colors flex-shrink-0" />
                   {item.label}
@@ -169,16 +150,42 @@ export default function Footer() {
               ))}
             </div>
 
-            <h4 className="text-[10px] font-bold uppercase tracking-[0.22em] text-accent/60 mb-4 flex items-center gap-2">
+            <h4 className="text-[11px] font-bold uppercase tracking-[0.22em] text-accent/75 mb-4 flex items-center gap-2">
+              <span className="w-3 h-px bg-accent/40" />
+              Social
+            </h4>
+            <div className="flex flex-col gap-3 mb-8">
+              {socialLinks.map(({ label, href, icon: Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={label}
+                  className="group inline-flex items-center gap-3 rounded-xl border border-white/12 bg-white/6 px-4 py-3 text-white/80 transition-colors hover:border-accent/40 hover:bg-accent/15 hover:text-white"
+                >
+                  <span
+                    className={`flex h-10 w-10 items-center justify-center rounded-lg text-white group-hover:scale-105 transition-transform ${
+                      label === "LinkedIn" ? "bg-[#0A66C2]" : "bg-[#1877F2]"
+                    }`}
+                  >
+                    <Icon className="relative h-5 w-5" />
+                  </span>
+                  <span className="text-[15px] font-medium">{label}</span>
+                </a>
+              ))}
+            </div>
+
+            <h4 className="text-[11px] font-bold uppercase tracking-[0.22em] text-accent/75 mb-4 flex items-center gap-2">
               <span className="w-3 h-px bg-accent/40" />
               Quick Links
             </h4>
             <div className="space-y-2">
-              <Link to="/quote" className="flex items-center gap-2 text-[13px] text-white/45 hover:text-accent transition-colors group">
+              <Link to="/quote" className="flex items-center gap-2 text-[15px] text-white/72 hover:text-accent transition-colors group">
                 <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                 Request a Quote
               </Link>
-              <Link to="/contact" className="flex items-center gap-2 text-[13px] text-white/45 hover:text-accent transition-colors group">
+              <Link to="/contact" className="flex items-center gap-2 text-[15px] text-white/72 hover:text-accent transition-colors group">
                 <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                 Contact Our Team
               </Link>
@@ -188,14 +195,14 @@ export default function Footer() {
 
         {/* ── Bottom bar ──────────────────────────────────────── */}
         <div className="border-t border-white/8 pt-7 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-[11px] text-white/25">
+          <p className="text-[13px] text-white/45">
             © {new Date().getFullYear()} Tact Freight. All rights reserved.
           </p>
           <div className="flex flex-wrap justify-center gap-2">
             {badges.map((b) => (
               <span
                 key={b}
-                className="text-[10px] px-2.5 py-1 rounded-md border border-white/8 text-white/25 font-medium"
+                className="text-[12px] px-2.5 py-1 rounded-md border border-white/10 text-white/55 font-medium"
               >
                 {b}
               </span>
