@@ -4,8 +4,8 @@ import PageHero from "../../components/shared/PageHero";
 import SectionHeading from "../../components/shared/SectionHeading";
 import CTASection from "../../components/home/CTASection";
 
-const HERO_IMG = "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1920&q=95";
-const STRIP_IMG = "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1920&q=90";
+const HERO_IMG = "/service-images/customs-clearance-hero.jpg";
+const STRIP_IMG = "/service-images/customs-clearance-strip.jpg";
 
 const features = [
   { title: "Documentation Management", desc: "Complete handling of all customs documents including bills of lading, commercial invoices, and certificates of origin." },

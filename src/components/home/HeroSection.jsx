@@ -1,6 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+//import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Phone, ChevronDown } from "lucide-react";
 import { useIsMobile } from "../../hooks/use-mobile";
 
@@ -11,15 +12,15 @@ const stats = [
   { num: "6", label: "Continents Served" },
 ];
 
-// Pexels free-use freight/port videos (no auth needed)
-const VIDEO_URL = "https://videos.pexels.com/video-files/3735869/3735869-uhd_2560_1440_25fps.mp4";
+const VIDEO_URL = "/seamless-hero.mp4?v=20260421-1";
 const HERO_POSTER = "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1920&q=80";
 
 export default function HeroSection() {
   const ref = useRef(null);
+  const [videoReady, setVideoReady] = useState(false);
   const isMobile = useIsMobile();
-  const prefersReducedMotion = useReducedMotion();
-  const showVideo = !isMobile && !prefersReducedMotion;
+  //const prefersReducedMotion = useReducedMotion();
+  const showVideo = !isMobile;
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
@@ -30,9 +31,17 @@ export default function HeroSection() {
       <motion.div style={{ y }} className="absolute inset-0">
         {showVideo ? (
           <video
-            autoPlay muted loop playsInline preload="metadata"
-            className="w-full h-full object-cover opacity-40"
-            poster={HERO_POSTER}
+            key={VIDEO_URL}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            onLoadedData={() => setVideoReady(true)}
+            onCanPlay={() => setVideoReady(true)}
+            className={`w-full h-full object-cover transition-opacity duration-700 ${
+              videoReady ? "opacity-100" : "opacity-0"
+            }`}
           >
             <source src={VIDEO_URL} type="video/mp4" />
           </video>

@@ -4,11 +4,11 @@ import PageHero from "../../components/shared/PageHero";
 import SectionHeading from "../../components/shared/SectionHeading";
 import CTASection from "../../components/home/CTASection";
 
-const HERO_IMG = "https://images.unsplash.com/photo-1464618663641-bbdd760ae84a?w=1920&q=95";
-const VIDEO_URL = "https://videos.pexels.com/video-files/2790396/2790396-uhd_2560_1440_25fps.mp4";
+const HERO_IMG = "/service-images/air-freight-hero.jpg";
+const STRIP_IMG = "/service-images/air-freight-strip.jpg";
 const EXTRA_IMGS = [
-  "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=900&q=85",
-  "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=900&q=85",
+  "/service-images/air-freight-gallery-1.jpg",
+  "/service-images/air-freight-gallery-2.jpg",
 ];
 
 const features = [
@@ -45,9 +45,12 @@ export default function AirFreight() {
       </section>
 
       <section ref={videoRef} className="relative h-[420px] overflow-hidden">
-        <motion.video style={{ scale }} autoPlay muted loop playsInline poster={HERO_IMG} className="absolute inset-0 w-full h-full object-cover">
-          <source src={VIDEO_URL} type="video/mp4" />
-        </motion.video>
+        <motion.img
+          style={{ scale }}
+          src={STRIP_IMG}
+          alt="Air cargo loading"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
         <div className="absolute inset-0 bg-primary/72" />
         <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>

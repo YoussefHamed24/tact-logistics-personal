@@ -4,11 +4,11 @@ import PageHero from "../../components/shared/PageHero";
 import SectionHeading from "../../components/shared/SectionHeading";
 import CTASection from "../../components/home/CTASection";
 
-const HERO_IMG = "https://images.unsplash.com/photo-1530521954074-e64f6810b32d?w=1920&q=95";
-const VIDEO_URL = "https://videos.pexels.com/video-files/4252375/4252375-uhd_2560_1440_25fps.mp4";
+const HERO_IMG = "/service-images/sea-freight-hero.jpg";
+const STRIP_IMG = "/service-images/sea-freight-strip.jpg";
 const EXTRA_IMGS = [
-  "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=900&q=85",
-  "https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=900&q=85",
+  "/service-images/sea-freight-gallery-1.jpg",
+  "/service-images/sea-freight-gallery-2.jpg",
 ];
 
 const features = [
@@ -53,11 +53,14 @@ export default function SeaFreight() {
         </div>
       </section>
 
-      {/* Video strip */}
+      {/* Photo strip */}
       <section ref={videoRef} className="relative h-[440px] overflow-hidden">
-        <motion.video style={{ scale }} autoPlay muted loop playsInline poster={HERO_IMG} className="absolute inset-0 w-full h-full object-cover">
-          <source src={VIDEO_URL} type="video/mp4" />
-        </motion.video>
+        <motion.img
+          style={{ scale }}
+          src={STRIP_IMG}
+          alt="Sea freight port operations"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
         <div className="absolute inset-0 bg-primary/70" />
         <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
