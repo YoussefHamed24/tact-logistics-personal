@@ -192,13 +192,13 @@ export default function Navbar() {
 
           {/* CTA + mobile toggle */}
           <div className="flex items-center gap-3">
-            <Link
-              to="/quote"
+            <a
+              href="https://tactfreight.net/ciadmin"
               className="hidden xl:inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-5 py-2.5 rounded-lg text-[14px] font-semibold transition-all hover:shadow-lg hover:shadow-accent/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35">
               
-              Get a Quote
+              Tracking
               <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
+            </a>
             <button
               className="xl:hidden p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35"
               onClick={() => setMobileOpen(!mobileOpen)}>
@@ -268,12 +268,12 @@ export default function Navbar() {
               )}
 
                 <div className="pt-3 mt-2 border-t border-border">
-                  <Link
-                  to="/quote"
+                  <a
+                  href="https://tactfreight.net/ciadmin"
                   className="flex items-center justify-center gap-2 bg-accent text-white py-3 rounded-xl font-semibold text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35">
                   
-                    Get a Quote <ArrowRight className="w-4 h-4" />
-                  </Link>
+                    Tracking <ArrowRight className="w-4 h-4" />
+                  </a>
                 </div>
               </div>
             </motion.div>
