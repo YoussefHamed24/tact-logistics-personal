@@ -85,8 +85,10 @@ export default function HeroSection() {
                 />
               </span>
               <br />
-              <span className="text-white/88 text-[3.15rem] md:text-[3.75rem] lg:text-[4.2rem] font-medium">
-                Delivered with Trust &amp; Precision.
+              <span className="text-white/88 text-[2.6rem] md:text-[3.1rem] lg:text-[3.45rem] font-medium">
+                Delivered with Trust &amp;
+                <br />
+                Precision.
               </span>
             </motion.h1>
 
