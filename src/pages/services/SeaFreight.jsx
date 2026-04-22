@@ -61,12 +61,12 @@ export default function SeaFreight() {
           alt="Sea freight port operations"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-primary/70" />
+        <div className="absolute inset-0 bg-primary/64" />
         <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
             <p className="text-accent text-xs font-bold uppercase tracking-[0.25em] mb-4">Port Operations</p>
             <h2 className="text-4xl md:text-5xl font-bold text-white">Moving Millions of Tonnes — Every Year</h2>
-            <p className="mt-4 text-white/55 text-lg max-w-lg mx-auto">Real-time port coordination at Alexandria, Port Said, Damietta & Suez.</p>
+            <p className="mt-4 text-white/70 text-lg max-w-lg mx-auto">Real-time port coordination at Alexandria, Port Said, Damietta & Suez.</p>
           </motion.div>
         </div>
       </section>

@@ -1,9 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-//import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Phone, ChevronDown } from "lucide-react";
-import { useIsMobile } from "../../hooks/use-mobile";
 
 const stats = [
   { num: "25+", label: "Years Experience" },
@@ -13,14 +11,9 @@ const stats = [
 ];
 
 const VIDEO_URL = "/seamless-hero.mp4?v=20260421-1";
-const HERO_POSTER = "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1920&q=80";
 
 export default function HeroSection() {
   const ref = useRef(null);
-  const [videoReady, setVideoReady] = useState(false);
-  const isMobile = useIsMobile();
-  //const prefersReducedMotion = useReducedMotion();
-  const showVideo = !isMobile;
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
@@ -29,35 +22,23 @@ export default function HeroSection() {
     <section ref={ref} className="relative min-h-screen flex flex-col overflow-hidden bg-primary">
       {/* Video background with parallax */}
       <motion.div style={{ y }} className="absolute inset-0">
-        {showVideo ? (
-          <video
-            key={VIDEO_URL}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            onLoadedData={() => setVideoReady(true)}
-            onCanPlay={() => setVideoReady(true)}
-            className={`w-full h-full object-cover transition-opacity duration-700 ${
-              videoReady ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <source src={VIDEO_URL} type="video/mp4" />
-          </video>
-        ) : (
-          <img
-            src={HERO_POSTER}
-            alt=""
-            className="w-full h-full object-cover opacity-40"
-            loading="eager"
-          />
-        )}
+        <video
+          key={VIDEO_URL}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="w-full h-full object-cover"
+        >
+          <source src={VIDEO_URL} type="video/mp4" />
+        </video>
       </motion.div>
 
       {/* Layered gradients */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/85 to-primary/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/[0.82] via-black/[0.56] to-black/[0.18]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/[0.46] via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-primary/[0.22]" />
 
       {/* Animated grid overlay */}
       <div
@@ -91,7 +72,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-5xl md:text-6xl lg:text-[5rem] font-bold text-white leading-[1.03] tracking-tight"
+              className="text-[4.25rem] md:text-[4.9rem] lg:text-[4.65rem] font-bold text-white leading-[1.04] tracking-tight"
             >
               Global Freight{" "}
               <span className="relative inline-block">
@@ -104,7 +85,7 @@ export default function HeroSection() {
                 />
               </span>
               <br />
-              <span className="text-white/88 text-4xl md:text-5xl lg:text-6xl font-medium">
+              <span className="text-white/88 text-[3.15rem] md:text-[3.75rem] lg:text-[4.2rem] font-medium">
                 Delivered with Trust &amp; Precision.
               </span>
             </motion.h1>
@@ -113,7 +94,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="mt-8 text-lg md:text-xl text-white max-w-2xl leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]"
+              className="mt-7 text-[1.05rem] md:text-[1.12rem] text-white max-w-2xl leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]"
             >
               Connecting Egypt to global markets with seamless, end-to-end
               logistics solutions across sea, air, and land.
@@ -124,18 +105,18 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.45 }}
-              className="mt-10 flex flex-col sm:flex-row sm:flex-wrap gap-4 max-w-md sm:max-w-none"
+              className="mt-9 flex flex-col sm:flex-row sm:flex-wrap gap-4 max-w-md sm:max-w-none"
             >
               <Link
                 to="/quote"
-                className="group inline-flex items-center justify-center gap-2.5 bg-accent hover:bg-accent/90 text-white px-8 py-4 rounded-xl font-semibold text-base transition-all duration-300 hover:shadow-2xl hover:shadow-accent/30 hover:-translate-y-0.5"
+                className="group inline-flex items-center justify-center gap-2.5 bg-accent hover:bg-accent/90 text-white px-7 py-3.5 rounded-xl font-semibold text-[15px] transition-all duration-300 hover:shadow-2xl hover:shadow-accent/30 hover:-translate-y-0.5"
               >
                 Request a Quote
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-2.5 border border-white/20 hover:border-white/40 bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-xl font-semibold text-base transition-all duration-300 backdrop-blur-sm"
+                className="inline-flex items-center justify-center gap-2.5 border border-white/20 hover:border-white/40 bg-white/5 hover:bg-white/10 text-white px-7 py-3.5 rounded-xl font-semibold text-[15px] transition-all duration-300 backdrop-blur-sm"
               >
                 <Phone className="w-4 h-4" />
                 Contact Us

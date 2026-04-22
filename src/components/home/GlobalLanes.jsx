@@ -6,7 +6,8 @@ const regions = [
   {
     name: "Africa",
     desc: "Strategic gateway through Egypt connecting North & Sub-Saharan Africa.",
-    img: "https://images.unsplash.com/photo-1484318571209-661cf29a69b3?w=1000&q=90",
+    img: "/service-images/pexels-mukula-igavinchi-443985808-15496542.jpg",
+    position: "center 68%",
     detail: "Alexandria, Port Said, Damietta, Suez — connecting to Mombasa, Lagos, Durban and beyond.",
   },
   {
@@ -24,7 +25,7 @@ const regions = [
   {
     name: "Asia",
     desc: "Strong connections to China, India, Southeast Asia, and beyond.",
-    img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1000&q=90",
+    img: "/service-images/asia-singapore-skyline.jpg",
     detail: "Shanghai, Singapore, Mumbai, Hong Kong — direct FCL & LCL weekly services.",
   },
   {
@@ -64,6 +65,7 @@ export default function GlobalLanes() {
                 whileHover={{ scale: 1.06 }}
                 transition={{ duration: 0.6 }}
                 className="absolute inset-0 w-full h-full object-cover"
+                style={{ objectPosition: r.position || "center" }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/55 to-primary/15" />
 

@@ -51,12 +51,12 @@ export default function AirFreight() {
           alt="Air cargo loading"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-primary/72" />
+        <div className="absolute inset-0 bg-primary/66" />
         <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
             <p className="text-accent text-xs font-bold uppercase tracking-[0.25em] mb-4">Speed Above All</p>
             <h2 className="text-4xl md:text-5xl font-bold text-white">When Time Is the Cargo</h2>
-            <p className="mt-4 text-white/55 text-lg max-w-lg mx-auto">Scheduled and charter flights to 200+ destinations worldwide.</p>
+            <p className="mt-4 text-white/70 text-lg max-w-lg mx-auto">Scheduled and charter flights to 200+ destinations worldwide.</p>
           </motion.div>
         </div>
       </section>

@@ -43,7 +43,7 @@ export default function WarehousingPage() {
       {/* Photo strip */}
       <section className="relative h-[360px] overflow-hidden">
         <motion.img initial={{ scale: 1.08 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ duration: 1.2 }} src={STRIP_IMG} alt="Warehouse interior" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-primary/75" />
+        <div className="absolute inset-0 bg-primary/66" />
         <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
           <motion.div initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <p className="text-accent text-xs font-bold uppercase tracking-[0.25em] mb-4">Storage Excellence</p>

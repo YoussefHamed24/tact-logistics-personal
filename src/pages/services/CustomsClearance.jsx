@@ -47,12 +47,12 @@ export default function CustomsClearance() {
           alt="Customs documentation"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-primary/80" />
+        <div className="absolute inset-0 bg-primary/68" />
         <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
           <motion.div initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <p className="text-accent text-xs font-bold uppercase tracking-[0.25em] mb-4">Certified Experts</p>
             <h2 className="text-3xl md:text-4xl font-bold text-white">Cleared. Compliant. On Time.</h2>
-            <p className="mt-4 text-white/55 text-base max-w-md mx-auto">Our customs brokers work around the clock across all Egyptian entry points.</p>
+            <p className="mt-4 text-white/72 text-base max-w-md mx-auto">Our customs brokers work around the clock across all Egyptian entry points.</p>
           </motion.div>
         </div>
       </section>

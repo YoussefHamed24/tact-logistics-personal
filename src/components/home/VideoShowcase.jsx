@@ -1,39 +1,27 @@
-import React, { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { useIsMobile } from "../../hooks/use-mobile";
+import React from "react";
+import { motion } from "framer-motion";
 
-// Free pexels freight-industry clips
-const clips = [
+const highlights = [
   {
-    video: "https://videos.pexels.com/video-files/4252375/4252375-uhd_2560_1440_25fps.mp4",
-    poster: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&q=80",
-    label: "Port Operations",
-    desc: "World-class container terminal management",
+    image: "/service-images/sea-freight-strip.jpg",
+    label: "Sea Freight",
+    desc: "Container handling and dependable ocean capacity across major trade lanes.",
   },
   {
-    video: "https://videos.pexels.com/video-files/2790396/2790396-uhd_2560_1440_25fps.mp4",
-    poster: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=800&q=80",
-    label: "Air Cargo",
-    desc: "Time-critical airfreight across six continents",
+    image: "/service-images/air-freight-hero.jpg",
+    label: "Air Freight",
+    desc: "Priority air cargo for time-sensitive shipments and high-value moves.",
   },
   {
-    video: "https://videos.pexels.com/video-files/8543508/8543508-uhd_3840_2160_24fps.mp4",
-    poster: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=800&q=80",
-    label: "Land Transport",
-    desc: "GPS-tracked fleet covering all of Egypt",
+    image: "/service-images/inland-transport-hero.jpg",
+    label: "Inland Transport",
+    desc: "Road coverage across Egypt with coordinated door-to-door execution.",
   },
 ];
 
 export default function VideoShowcase() {
-  const ref = useRef(null);
-  const isMobile = useIsMobile();
-  const prefersReducedMotion = useReducedMotion();
-  const showVideo = !isMobile && !prefersReducedMotion;
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
-
   return (
-    <section ref={ref} className="relative py-28 bg-primary overflow-hidden">
+    <section className="relative py-28 bg-primary overflow-hidden">
       {/* Subtle grid texture */}
       <div
         className="absolute inset-0 opacity-[0.04]"
@@ -58,46 +46,37 @@ export default function VideoShowcase() {
             <span className="w-4 h-px bg-accent/60" />
           </span>
           <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">
-            Freight That Never Stops
+            Freight In Motion
           </h2>
           <p className="mt-4 text-white/50 text-lg max-w-xl mx-auto">
-            Every hour, we move critical cargo across sea, air, and land.
+            The core services on Tact's homepage now use freight-specific imagery that matches the actual offer.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {clips.map((clip, i) => (
+          {highlights.map((item, i) => (
             <motion.div
-              key={clip.label}
+              key={item.label}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.55, delay: i * 0.12 }}
-              className="group relative rounded-2xl overflow-hidden"
-              style={{ height: i === 1 ? "420px" : "340px" }}
+              className="group relative rounded-[28px] overflow-hidden border border-white/10 bg-white/[0.03]"
+              style={{ height: i === 1 ? "430px" : "360px" }}
             >
-              {showVideo ? (
-                <video
-                  autoPlay muted loop playsInline preload="metadata"
-                  poster={clip.poster}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                >
-                  <source src={clip.video} type="video/mp4" />
-                </video>
-              ) : (
-                <img
-                  src={clip.poster}
-                  alt=""
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              )}
+              <img
+                src={item.image}
+                alt={item.label}
+                loading={i === 0 ? "eager" : "lazy"}
+                fetchPriority={i === 0 ? "high" : "auto"}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/30 to-transparent" />
-              <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/5 transition-colors duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-accent/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <div className="w-6 h-px bg-accent mb-3" />
-                <h3 className="text-white font-bold text-lg">{clip.label}</h3>
-                <p className="text-white/55 text-sm mt-1">{clip.desc}</p>
+                <h3 className="text-white font-bold text-[1.65rem] leading-tight">{item.label}</h3>
+                <p className="text-white/70 text-sm mt-2 max-w-[26ch]">{item.desc}</p>
               </div>
             </motion.div>
           ))}

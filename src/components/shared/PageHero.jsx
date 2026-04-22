@@ -18,13 +18,14 @@ export default function PageHero({ title, subtitle, image, breadcrumb }) {
           style={{ y: imgY }}
           src={image}
           alt={title}
-          className="absolute inset-0 w-full h-full object-cover opacity-35 scale-110"
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.48] scale-110"
         />
       )}
 
       {/* Layered gradients */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-primary/40" />
-      <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/[0.5] via-black/[0.22] to-black/[0.04]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/[0.18] via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-primary/[0.06]" />
 
       {/* Accent glow */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[100px] pointer-events-none" />

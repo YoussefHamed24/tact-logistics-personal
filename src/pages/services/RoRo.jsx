@@ -4,8 +4,8 @@ import PageHero from "../../components/shared/PageHero";
 import SectionHeading from "../../components/shared/SectionHeading";
 import CTASection from "../../components/home/CTASection";
 
-const HERO_IMG = "https://images.unsplash.com/photo-1574023278095-e0a8c0a28e66?w=1920&q=95";
-const STRIP_IMG = "https://images.unsplash.com/photo-1502877338535-766e1452684a?w=1920&q=90";
+const HERO_IMG = "/service-images/RoRo.jpeg";
+const STRIP_IMG = "/service-images/RoRo.jpeg";
 
 const features = [
   { title: "Vehicle Transport", desc: "Safe and efficient roll-on/roll-off services for cars, SUVs, trucks, and commercial vehicles." },
@@ -38,7 +38,7 @@ export default function RoRo() {
 
       <section className="relative h-[360px] overflow-hidden">
         <motion.img initial={{ scale: 1.08 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ duration: 1.2 }} src={STRIP_IMG} alt="RoRo vehicles" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-primary/75" />
+        <div className="absolute inset-0 bg-primary/66" />
         <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
           <motion.div initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <p className="text-accent text-xs font-bold uppercase tracking-[0.25em] mb-4">Vehicle Specialists</p>

@@ -23,7 +23,6 @@ const navLinks = [
 { label: "Services", path: "/services", children: serviceItems },
 { label: "Why Us & Industries", path: "/why-us" },
 { label: "Partners & Clients", path: "/company" },
-{ label: "Case Studies", path: "/case-studies" },
 { label: "Contact", path: "/contact" },
 { label: "Careers", path: "/careers" }];
 
@@ -194,6 +193,8 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <a
               href="https://tactfreight.net/ciadmin"
+              target="_blank"
+              rel="noreferrer"
               className="hidden xl:inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-5 py-2.5 rounded-lg text-[14px] font-semibold transition-all hover:shadow-lg hover:shadow-accent/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35">
               
               Tracking
@@ -270,6 +271,8 @@ export default function Navbar() {
                 <div className="pt-3 mt-2 border-t border-border">
                   <a
                   href="https://tactfreight.net/ciadmin"
+                  target="_blank"
+                  rel="noreferrer"
                   className="flex items-center justify-center gap-2 bg-accent text-white py-3 rounded-xl font-semibold text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35">
                   
                     Tracking <ArrowRight className="w-4 h-4" />

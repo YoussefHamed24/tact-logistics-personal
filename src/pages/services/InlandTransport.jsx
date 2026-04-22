@@ -51,12 +51,12 @@ export default function InlandTransport() {
           alt="Inland transport operations"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-primary/72" />
+        <div className="absolute inset-0 bg-primary/64" />
         <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
             <p className="text-accent text-xs font-bold uppercase tracking-[0.25em] mb-4">On the Road</p>
             <h2 className="text-4xl md:text-5xl font-bold text-white">Always Moving Forward</h2>
-            <p className="mt-4 text-white/55 text-lg max-w-lg mx-auto">GPS-tracked fleet ensuring your cargo arrives on time, every time.</p>
+            <p className="mt-4 text-white/70 text-lg max-w-lg mx-auto">GPS-tracked fleet ensuring your cargo arrives on time, every time.</p>
           </motion.div>
         </div>
       </section>

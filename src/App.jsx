@@ -22,7 +22,6 @@ import WhyAndIndustries from './pages/WhyAndIndustries';
 import Company from './pages/Company';
 import Contact from './pages/Contact';
 import Quote from './pages/Quote';
-import CaseStudies from './pages/CaseStudies';
 import Careers from './pages/Careers';
 
 function App() {
@@ -46,7 +45,6 @@ function App() {
             <Route path="/company" element={<Company />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/quote" element={<Quote />} />
-            <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="/careers" element={<Careers />} />
           </Route>
           <Route path="*" element={<PageNotFound />} />

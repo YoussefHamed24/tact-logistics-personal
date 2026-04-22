@@ -45,7 +45,7 @@ const services = [
     title: "RoRo Services",
     desc: "Roll-on/Roll-off transport for vehicles & heavy machinery.",
     path: "/services/roro",
-    img: "https://images.unsplash.com/photo-1574023278095-e0a8c0a28e66?w=800&q=85",
+    img: "/service-images/RoRo.jpeg",
   },
   {
     title: "Consultancy",
@@ -81,7 +81,7 @@ export default function ServicesOverview() {
           viewport={{ once: true, margin: "-60px" }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
         >
-          {services.map((svc) => (
+          {services.map((svc, index) => (
             <motion.div key={svc.title} variants={cardVariants}>
               <Link
                 to={svc.path}
@@ -92,7 +92,8 @@ export default function ServicesOverview() {
                   <img
                     src={svc.img}
                     alt={svc.title}
-                    loading="lazy"
+                    loading={index < 4 ? "eager" : "lazy"}
+                    fetchPriority={index < 2 ? "high" : "auto"}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-primary/10 to-transparent" />

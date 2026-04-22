@@ -4,11 +4,11 @@ import PageHero from "../components/shared/PageHero";
 import SectionHeading from "../components/shared/SectionHeading";
 import CTASection from "../components/home/CTASection";
 
-const ABOUT_HERO = "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1920&q=95";
-const PORT_VIDEO = "https://videos.pexels.com/video-files/4252375/4252375-uhd_2560_1440_25fps.mp4";
-const PORT_POSTER = "https://images.unsplash.com/photo-1519869325930-281384150729?w=1800&q=90";
-const WAREHOUSE_IMG = "https://images.unsplash.com/photo-1553413077-190dd305871c?w=1400&q=90";
-const TEAM_IMG = "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=1400&q=90";
+const ABOUT_HERO = "/service-images/sea-freight-hero.jpg";
+const PORT_VIDEO = "/seamless-hero.mp4?v=20260421-1";
+const PORT_POSTER = "/service-images/sea-freight-hero.jpg";
+const WAREHOUSE_IMG = "/service-images/inland-transport-gallery-1.jpg";
+const TEAM_IMG = "/service-images/air-freight-hero.jpg";
 
 const values = [
   { title: "Integrity Without Compromise", desc: "Complete transparency, ethical practices, and unwavering honesty in every transaction." },
@@ -34,8 +34,10 @@ function StatCounter({ num, label, delay }) {
       transition={{ delay, duration: 0.5 }}
       className="text-center"
     >
-      <div className="text-3xl md:text-4xl font-bold text-accent">{num}</div>
-      <div className="text-[11px] text-white/72 mt-1 leading-tight uppercase tracking-wider">{label}</div>
+      <div className="text-3xl md:text-4xl font-bold text-accent drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)]">{num}</div>
+      <div className="mt-1 text-[11px] font-medium leading-tight uppercase tracking-wider text-white/95 drop-shadow-[0_3px_10px_rgba(0,0,0,0.65)]">
+        {label}
+      </div>
     </motion.div>
   );
 }
@@ -71,7 +73,8 @@ export default function About() {
               alt="Tact Freight team"
               className="w-full h-full object-cover min-h-[400px]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/[0.82] via-black/[0.46] to-transparent" />
+            <div className="absolute inset-0 bg-primary/[0.22]" />
             <div className="absolute bottom-0 left-0 right-0 p-8">
               <div className="grid grid-cols-4 gap-4">
                 {stats.map((s, i) => <StatCounter key={s.label} {...s} delay={i * 0.08} />)}
@@ -129,7 +132,8 @@ export default function About() {
         >
           <source src={PORT_VIDEO} type="video/mp4" />
         </motion.video>
-        <div className="absolute inset-0 bg-primary/75" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/[0.52] via-black/[0.28] to-black/[0.18]" />
+        <div className="absolute inset-0 bg-black/[0.18]" />
         <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -138,10 +142,10 @@ export default function About() {
             transition={{ duration: 0.7 }}
           >
             <p className="text-accent text-xs font-bold uppercase tracking-[0.25em] mb-4">Our Operations</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight drop-shadow-[0_6px_20px_rgba(0,0,0,0.6)]">
               Every Day. Every Port.<br />Every Destination.
             </h2>
-            <p className="mt-5 text-white/82 text-lg max-w-xl mx-auto">
+            <p className="mt-5 text-white/90 text-lg max-w-xl mx-auto drop-shadow-[0_4px_16px_rgba(0,0,0,0.55)]">
               Around the clock, our teams manage cargo movements at Egypt's major ports and beyond.
             </p>
           </motion.div>
@@ -157,8 +161,9 @@ export default function About() {
           transition={{ duration: 1.2 }}
           src={WAREHOUSE_IMG}
           alt="Warehouse operations"
-          className="absolute inset-0 w-full h-full object-cover opacity-20"
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.3]"
         />
+        <div className="absolute inset-0 bg-black/[0.58]" />
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {[
@@ -182,15 +187,17 @@ export default function About() {
                 whileHover={{ y: -4 }}
                 className={`backdrop-blur-sm border rounded-2xl p-8 transition-shadow hover:shadow-2xl ${
                   item.accent
-                    ? "bg-accent/15 border-accent/30"
-                    : "bg-white/8 border-white/15"
+                    ? "bg-accent/[0.32] border-accent/[0.46]"
+                    : "bg-white/[0.18] border-white/[0.28]"
                 }`}
               >
                 <div className="mb-4">
                   <div className="w-6 h-px bg-accent mb-3" />
                   <h3 className="text-xl font-bold text-white">{item.title}</h3>
                 </div>
-                <p className="text-white/82 leading-relaxed text-[15px]">{item.text}</p>
+                <p className="text-white leading-relaxed text-[15px] drop-shadow-[0_3px_10px_rgba(0,0,0,0.55)]">
+                  {item.text}
+                </p>
               </motion.div>
             ))}
           </div>

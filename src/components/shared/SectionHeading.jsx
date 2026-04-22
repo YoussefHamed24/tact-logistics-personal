@@ -12,12 +12,12 @@ export default function SectionHeading({ label, title, description, centered = t
     >
       {label && (
         <span
-          className={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] mb-4
+          className={`inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.24em] mb-4
             ${light ? "text-accent" : "text-accent"}`}
         >
-          <span className={`w-4 h-px ${light ? "bg-accent/60" : "bg-accent/60"}`} />
+          <span className={`w-5 h-px ${light ? "bg-accent/70" : "bg-accent/70"}`} />
           {label}
-          <span className={`w-4 h-px ${light ? "bg-accent/60" : "bg-accent/60"}`} />
+          <span className={`w-5 h-px ${light ? "bg-accent/70" : "bg-accent/70"}`} />
         </span>
       )}
       <h2
