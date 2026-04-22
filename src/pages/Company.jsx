@@ -6,7 +6,7 @@ import SectionHeading from "../components/shared/SectionHeading";
 import CTASection from "../components/home/CTASection";
 import { shippingLineLogos, clientLogos } from "../lib/companyLogos";
 
-const HERO_IMG = "https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?w=1920&q=95";
+const HERO_IMG = "/service-images/partners & clients.jpg";
 
 const networks = [
   {

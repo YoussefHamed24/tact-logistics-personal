@@ -4,22 +4,34 @@ import PageHero from "../components/shared/PageHero";
 import SectionHeading from "../components/shared/SectionHeading";
 import CTASection from "../components/home/CTASection";
 
-const HERO_IMG = "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=95";
-
-const pillarImages = [
-  "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=900&q=90",
-  "https://images.unsplash.com/photo-1464618663641-bbdd760ae84a?w=900&q=90",
-  "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=900&q=90",
-  "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=900&q=90",
-  "https://images.unsplash.com/photo-1553413077-190dd305871c?w=900&q=90",
-];
+const HERO_IMG = "/service-images/why us & industries.jpg";
 
 const pillars = [
-  { title: "Supply Chain Simplification", desc: "We break down the complexity of global logistics into a streamlined, single-source solution. From booking to delivery, our integrated approach eliminates inefficiencies and reduces costs across your entire supply chain." },
-  { title: "Professional Credibility", desc: "With decades of combined experience, our team brings deep industry knowledge and a proven track record. Built on consistent delivery, transparent communication, and unwavering commitment to our clients." },
-  { title: "Integrated Solutions", desc: "Under one roof: freight forwarding, customs clearance, warehousing, inland transport, and advisory services. This integration ensures seamless coordination, faster transit times, and reduced handling risks." },
-  { title: "Technology-Enabled Efficiency", desc: "We leverage cutting-edge logistics technology including real-time GPS tracking, digital documentation, automated reporting, and AI-driven route optimization to deliver visibility and control." },
-  { title: "Global Partnerships", desc: "Our strategic alliances with over 50 global partners — including Maersk, CMA CGM, MSC, Hapag-Lloyd — ensure preferential rates, priority space, and extensive coverage across all major trade lanes." },
+  {
+    title: "Supply Chain Simplification",
+    image: "/service-images/supply_chain.jpg",
+    desc: "We break down the complexity of global logistics into a streamlined, single-source solution. From booking to delivery, our integrated approach eliminates inefficiencies and reduces costs across your entire supply chain.",
+  },
+  {
+    title: "Professional Credibility",
+    image: "/service-images/professional_credibility.jpg",
+    desc: "With decades of combined experience, our team brings deep industry knowledge and a proven track record. Built on consistent delivery, transparent communication, and unwavering commitment to our clients.",
+  },
+  {
+    title: "Integrated Solutions",
+    image: "/service-images/Integrated Solutions.jpg",
+    desc: "Under one roof: freight forwarding, customs clearance, warehousing, inland transport, and advisory services. This integration ensures seamless coordination, faster transit times, and reduced handling risks.",
+  },
+  {
+    title: "Technology-Enabled Efficiency",
+    image: "/service-images/Technology-Enabled Efficiency.jpg",
+    desc: "We leverage cutting-edge logistics technology including real-time GPS tracking, digital documentation, automated reporting, and AI-driven route optimization to deliver visibility and control.",
+  },
+  {
+    title: "Global Partnerships",
+    image: "/service-images/Global Partnerships.jpg",
+    desc: "Our strategic alliances with over 50 global partners — including Maersk, CMA CGM, MSC, Hapag-Lloyd — ensure preferential rates, priority space, and extensive coverage across all major trade lanes.",
+  },
 ];
 
 const industries = [
@@ -59,9 +71,9 @@ export default function WhyAndIndustries() {
                 whileHover={{ x: 4 }}
                 className="group grid md:grid-cols-[260px_1fr] bg-card border border-border/50 rounded-2xl overflow-hidden hover:border-accent/25 hover:shadow-xl transition-all duration-300"
               >
-                <div className="relative h-44 md:h-auto overflow-hidden">
+                <div className="relative h-44 md:h-full min-h-[176px] overflow-hidden">
                   <motion.img
-                    src={pillarImages[i]}
+                    src={p.image}
                     alt={p.title}
                     className="w-full h-full object-cover"
                     whileHover={{ scale: 1.08 }}

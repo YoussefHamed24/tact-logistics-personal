@@ -72,7 +72,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-[4.25rem] md:text-[4.9rem] lg:text-[4.65rem] font-bold text-white leading-[1.04] tracking-tight"
+              className="text-[3.15rem] sm:text-[3.7rem] md:text-[4.9rem] lg:text-[4.65rem] font-bold text-white leading-[1.04] tracking-tight"
             >
               Global Freight{" "}
               <span className="relative inline-block">
@@ -85,7 +85,7 @@ export default function HeroSection() {
                 />
               </span>
               <br />
-              <span className="text-white/88 text-[2.6rem] md:text-[3.1rem] lg:text-[3.45rem] font-medium">
+              <span className="text-white/88 text-[2.05rem] sm:text-[2.35rem] md:text-[3.1rem] lg:text-[3.45rem] font-medium">
                 Delivered with Trust &amp;
                 <br />
                 Precision.

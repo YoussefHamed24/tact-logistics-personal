@@ -70,7 +70,7 @@ export default function PageHero({ title, subtitle, image, breadcrumb }) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.05 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight drop-shadow-[0_4px_18px_rgba(0,0,0,0.55)]"
         >
           {title}
         </motion.h1>
@@ -80,7 +80,7 @@ export default function PageHero({ title, subtitle, image, breadcrumb }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.18 }}
-            className="mt-4 text-lg text-white/78 max-w-xl"
+            className="mt-4 max-w-xl text-lg text-white/95 drop-shadow-[0_3px_14px_rgba(0,0,0,0.5)]"
           >
             {subtitle}
           </motion.p>

@@ -7,8 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Globe, Send, CheckCircle2 } from "lucide-react";
 
-const HERO_IMG = "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&q=95";
-const MAP_IMG = "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1400&q=90";
+const HERO_IMG = "/service-images/contact_us.jpg";
 
 const contactItems = [
   { icon: MapPin, label: "Address", value: "29 Ahmad Kassem Gouda St., Nasr City, Cairo 11371, Egypt", href: "https://maps.google.com/?q=29+Ahmad+Kassem+Gouda+St+Nasr+City+Cairo+Egypt" },
@@ -52,20 +51,6 @@ export default function Contact() {
   return (
     <>
       <PageHero title="Contact Us" subtitle="Get in touch with our team today." image={HERO_IMG} />
-
-      <div className="relative h-52 overflow-hidden">
-        <motion.img
-          initial={{ scale: 1.08 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ duration: 1.2 }}
-          src={MAP_IMG} alt="Cairo Egypt" className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-primary/60" />
-        <div className="relative z-10 h-full flex items-center px-8 md:px-20">
-          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-            <p className="text-accent text-xs font-bold uppercase tracking-widest mb-1">Headquarters</p>
-            <p className="text-white font-semibold text-lg">Cairo, Egypt</p>
-          </motion.div>
-        </div>
-      </div>
 
       <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-6">

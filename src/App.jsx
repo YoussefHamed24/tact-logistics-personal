@@ -23,6 +23,7 @@ import Company from './pages/Company';
 import Contact from './pages/Contact';
 import Quote from './pages/Quote';
 import Careers from './pages/Careers';
+import CaseStudies from './pages/CaseStudies';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
             <Route path="/services/consultancy" element={<Consultancy />} />
             <Route path="/why-us" element={<WhyAndIndustries />} />
             <Route path="/company" element={<Company />} />
+            <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/quote" element={<Quote />} />
             <Route path="/careers" element={<Careers />} />

@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { MapPin, Clock, ChevronDown, ChevronUp, Send, CheckCircle2, Briefcase, Users, TrendingUp, Award } from "lucide-react";
 
-const HERO_IMG = "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1920&q=95";
+const HERO_IMG = "/service-images/Careers.jpg";
 
 const openings = [
   {

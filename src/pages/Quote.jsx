@@ -7,6 +7,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Send, CheckCircle2 } from "lucide-react";
 
+const HERO_IMG = "/service-images/sea-freight-strip.jpg";
+
 const serviceOptions = [
   { value: "sea_freight", label: "Sea Freight" },
   { value: "air_freight", label: "Air Freight" },
@@ -63,7 +65,7 @@ export default function Quote() {
   if (submitted) {
     return (
       <>
-        <PageHero title="Request a Quote" subtitle="Get a competitive quote tailored to your needs." />
+        <PageHero title="Request a Quote" subtitle="Get a competitive quote tailored to your needs." image={HERO_IMG} />
         <section className="py-24 bg-background" ref={topRef}>
           <div className="max-w-xl mx-auto px-6 text-center">
             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}>
@@ -83,7 +85,7 @@ export default function Quote() {
 
   return (
     <>
-      <PageHero title="Request a Quote" subtitle="Get a competitive quote tailored to your needs." />
+      <PageHero title="Request a Quote" subtitle="Get a competitive quote tailored to your needs." image={HERO_IMG} />
       <section className="py-24 bg-background">
         <div className="max-w-4xl mx-auto px-6">
           <motion.div
