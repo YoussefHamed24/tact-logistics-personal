@@ -195,6 +195,15 @@ export default function Navbar() {
               href="https://tactfreight.net/ciadmin"
               target="_blank"
               rel="noreferrer"
+              className="xl:hidden inline-flex items-center gap-1.5 bg-accent hover:bg-accent/90 text-white px-3 py-2 rounded-lg text-[13px] font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35"
+            >
+              Tracking
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+            <a
+              href="https://tactfreight.net/ciadmin"
+              target="_blank"
+              rel="noreferrer"
               className="hidden xl:inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-5 py-2.5 rounded-lg text-[14px] font-semibold transition-all hover:shadow-lg hover:shadow-accent/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35">
               
               Tracking
