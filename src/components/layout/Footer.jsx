@@ -17,7 +17,6 @@ const footerCompany = [
   { label: "About Us",       path: "/about" },
   { label: "Why Us & Industries", path: "/why-us" },
   { label: "Partners & Clients",  path: "/company" },
-  { label: "Case Studies",        path: "/case-studies" },
   { label: "Request a Quote",     path: "/quote" },
   { label: "Contact Us",     path: "/contact" },
   { label: "Careers",        path: "/careers" },

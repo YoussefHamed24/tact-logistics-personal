@@ -54,14 +54,14 @@ export default function HeroSection() {
       <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[120px] pointer-events-none" />
 
       <motion.div style={{ opacity }} className="relative z-10 flex-1 flex items-center">
-        <div className="max-w-7xl mx-auto px-6 w-full py-24">
-          <div className="max-w-3xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full py-20 sm:py-24">
+          <div className="max-w-[19rem] sm:max-w-3xl">
             {/* Animated badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 border border-accent/30 bg-accent/10 backdrop-blur-sm text-accent text-xs font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full mb-8"
+              className="inline-flex items-center gap-2 border border-accent/30 bg-accent/10 backdrop-blur-sm text-accent text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] sm:tracking-[0.2em] px-3.5 sm:px-4 py-2 rounded-full mb-8"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
               Tact Freight — Cairo, Egypt
@@ -72,7 +72,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-[3.15rem] sm:text-[3.7rem] md:text-[4.9rem] lg:text-[4.65rem] font-bold text-white leading-[1.04] tracking-tight"
+              className="text-[2.55rem] sm:text-[3.7rem] md:text-[4.9rem] lg:text-[4.65rem] font-bold text-white leading-[1.04] tracking-tight"
             >
               Global Freight{" "}
               <span className="relative inline-block">
@@ -85,7 +85,7 @@ export default function HeroSection() {
                 />
               </span>
               <br />
-              <span className="text-white/88 text-[2.05rem] sm:text-[2.35rem] md:text-[3.1rem] lg:text-[3.45rem] font-medium">
+              <span className="text-white/88 text-[1.75rem] sm:text-[2.35rem] md:text-[3.1rem] lg:text-[3.45rem] font-medium">
                 Delivered with Trust &amp;
                 <br />
                 Precision.
@@ -96,7 +96,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="mt-7 text-[1.05rem] md:text-[1.12rem] text-white max-w-2xl leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]"
+              className="mt-7 text-[1rem] md:text-[1.12rem] text-white max-w-[18rem] sm:max-w-2xl leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]"
             >
               Connecting Egypt to global markets with seamless, end-to-end
               logistics solutions across sea, air, and land.
@@ -131,7 +131,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.65 }}
-            className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-0 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm bg-white/5 max-w-2xl"
+            className="mt-20 sm:mt-24 grid grid-cols-2 md:grid-cols-4 gap-0 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm bg-white/5 max-w-2xl"
           >
             {stats.map((stat, i) => (
               <motion.div
@@ -139,10 +139,10 @@ export default function HeroSection() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8 + i * 0.1 }}
-                className={`px-8 py-6 text-center ${i < 3 ? "border-r border-white/10" : ""}`}
+                className={`px-4 py-5 sm:px-8 sm:py-6 text-center ${i < 3 ? "border-r border-white/10" : ""}`}
               >
                 <div className="text-3xl md:text-4xl font-bold text-accent tracking-tight">{stat.num}</div>
-                <div className="mt-1 text-xs font-medium uppercase tracking-[0.16em] text-white/95 drop-shadow-[0_1px_6px_rgba(0,0,0,0.45)]">
+                <div className="mx-auto mt-1 max-w-[5.5rem] text-[10px] leading-snug sm:max-w-none sm:text-xs font-medium uppercase tracking-[0.08em] sm:tracking-[0.16em] text-white/95 drop-shadow-[0_1px_6px_rgba(0,0,0,0.45)]">
                   {stat.label}
                 </div>
               </motion.div>

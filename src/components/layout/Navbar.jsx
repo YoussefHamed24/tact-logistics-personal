@@ -89,14 +89,14 @@ export default function Navbar() {
       "bg-card/98 backdrop-blur-xl shadow-lg shadow-black/40 border-b border-border" :
       "bg-card border-b border-border"}`
       }>
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
 
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group flex-shrink-0">
+          <Link to="/" className="flex items-center gap-2 group min-w-0">
             <img
               src="/Tact Freight - Logo - Wide - 3.png"
               alt="Tact Freight"
-              className="h-11 w-auto object-contain xl:h-12"
+              className="h-9 sm:h-11 w-auto max-w-[210px] sm:max-w-none object-contain xl:h-12"
             />
           </Link>
 
@@ -190,7 +190,7 @@ export default function Navbar() {
           </div>
 
           {/* CTA + mobile toggle */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <a
               href="https://tactfreight.net/ciadmin"
               target="_blank"
