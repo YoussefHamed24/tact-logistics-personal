@@ -1,7 +1,16 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export default function SectionHeading({ label, title, description, centered = true, light = false }) {
+export default function SectionHeading({
+  label,
+  title,
+  description,
+  subtitle,
+  centered = true,
+  light = false,
+}) {
+  const bodyText = description ?? subtitle;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -26,13 +35,13 @@ export default function SectionHeading({ label, title, description, centered = t
       >
         {title}
       </h2>
-      {description && (
+      {bodyText && (
         <p
           className={`mt-5 text-lg max-w-2xl leading-relaxed
             ${centered ? "mx-auto" : ""}
             ${light ? "text-white/60" : "text-muted-foreground"}`}
         >
-          {description}
+          {bodyText}
         </p>
       )}
     </motion.div>

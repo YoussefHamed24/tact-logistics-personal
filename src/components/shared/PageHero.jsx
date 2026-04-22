@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ChevronRight, Home } from "lucide-react";
 
-export default function PageHero({ title, subtitle, image, breadcrumb }) {
+export default function PageHero({ title, subtitle, image, breadcrumb = null }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
@@ -56,7 +56,7 @@ export default function PageHero({ title, subtitle, image, breadcrumb }) {
             Home
           </Link>
           <ChevronRight className="w-3 h-3" />
-          <span className="text-white/70">{title}</span>
+          <span className="text-white/70">{breadcrumb ?? title}</span>
         </motion.div>
 
         <motion.div
