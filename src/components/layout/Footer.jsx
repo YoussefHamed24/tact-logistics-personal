@@ -22,7 +22,23 @@ const footerCompany = [
   { label: "Careers",        path: "/careers" },
 ];
 
-const badges = ["IATA Accredited", "FIATA Member", "DP World Alliance", "Cairo, Egypt"];
+const accreditationLogos = [
+  {
+    label: "IATA Accredited",
+    src: "/company-logos/IATA/IATA_idhsFWZqbC_1.png",
+    className: "h-9 sm:h-10",
+  },
+  {
+    label: "FIATA Member",
+    src: "/company-logos/FIATA_International_Federation_of_Freight_Forwarders_Associations/FIATA_International_Federation_of_Freight_Forwarders_Associations_idIlc3RIIl_0.png",
+    className: "h-9 sm:h-10",
+  },
+  {
+    label: "DF Alliance",
+    src: "/company-logos/Digital_Freight_Alliance.png",
+    className: "h-8 sm:h-9",
+  },
+];
 
 export default function Footer() {
   const socialLinks = [
@@ -197,15 +213,24 @@ export default function Footer() {
           <p className="text-[13px] text-white/45">
             © {new Date().getFullYear()} Tact Freight. All rights reserved.
           </p>
-          <div className="flex flex-wrap justify-center gap-2">
-            {badges.map((b) => (
+          <div className="flex flex-wrap items-center justify-center gap-2.5">
+            {accreditationLogos.map((item) => (
               <span
-                key={b}
-                className="text-[12px] px-2.5 py-1 rounded-md border border-white/10 text-white/55 font-medium"
+                key={item.label}
+                className="inline-flex h-12 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] px-3"
+                title={item.label}
               >
-                {b}
+                <img
+                  src={item.src}
+                  alt={item.label}
+                  className={`${item.className} max-w-[140px] object-contain`}
+                  loading="lazy"
+                />
               </span>
             ))}
+            <span className="text-[12px] px-2.5 py-1 rounded-md border border-white/10 text-white/55 font-medium">
+              Cairo, Egypt
+            </span>
           </div>
         </div>
       </div>
