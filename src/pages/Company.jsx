@@ -31,6 +31,7 @@ const networks = [
     name: "DF Alliance",
     full: "Digital Freight Alliance",
     logo: "/company-logos/Digital_Freight_Alliance.png",
+    darkLogo: true,
     desc: "Membership in a global digital freight network connecting independent forwarders for wider coverage and stronger collaboration.",
   },
   {
@@ -86,11 +87,15 @@ export default function Company() {
                 transition={{ delay: i * 0.08 }}
                 className="bg-card border border-border/50 rounded-xl p-7 hover:border-accent/20 hover:shadow-lg transition-all"
               >
-                <div className="flex h-16 items-center justify-start px-1 mb-5">
+                <div
+                  className={`flex h-16 items-center justify-start mb-5 ${
+                    n.darkLogo ? "rounded-lg bg-[hsl(218,62%,8%)] px-3" : "px-1"
+                  }`}
+                >
                   <img
                     src={n.logo}
                     alt={`${n.name} logo`}
-                    className="max-h-10 w-auto max-w-full object-contain"
+                    className={`${n.darkLogo ? "max-h-9" : "max-h-10"} w-auto max-w-full object-contain`}
                     loading="lazy"
                   />
                 </div>
