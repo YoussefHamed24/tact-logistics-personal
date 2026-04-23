@@ -17,7 +17,7 @@ export const shippingLineLogos = [
 
 export const clientLogos = [
   { name: "BMW", logo: "/company-logos/BMW_idc2AOVkmA_0.jpeg", hasLogo: true },
-  { name: "Nissan", logo: "/company-logos/nissan.png", hasLogo: true },
+  { name: "Nissan", logo: "/company-logos/Nissan/Nissan_Logo_1.png", hasLogo: true },
   { name: "BYD", logo: "/company-logos/BYD_idVcUXbGUk_1.png", hasLogo: true },
   { name: "Itochu", logo: "/company-logos/Itochu_id-ed7QpMo_1.png", hasLogo: true },
   { name: "Suzuki", logo: "/company-logos/suzuki.svg", hasLogo: true },
