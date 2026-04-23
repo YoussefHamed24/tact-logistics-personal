@@ -4,11 +4,11 @@ import PageHero from "../../components/shared/PageHero";
 import SectionHeading from "../../components/shared/SectionHeading";
 import CTASection from "../../components/home/CTASection";
 
-const HERO_IMG = "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=95";
-const STRIP_IMG = "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=1920&q=90";
+const HERO_IMG = "/service-images/sea-freight-gallery-2.jpg";
+const STRIP_IMG = "/service-images/inland-transport-gallery-2.jpg";
 const EXTRA_IMGS = [
-  "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=900&q=85",
-  "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=900&q=85",
+  "/service-images/pexels-markku-soini-346079267-14475264.jpg",
+  "/service-images/inland-transport-gallery-1.jpg",
 ];
 
 const features = [
