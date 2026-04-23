@@ -22,10 +22,10 @@ const networks = [
     desc: "Membership in the world's largest freight forwarding network, ensuring adherence to the highest industry standards.",
   },
   {
-    name: "DP World Alliance",
-    full: "DP World Global Network",
-    logo: "/company-logos/DP_World/DP_World_idYmx1Uuqx_2.svg",
-    desc: "Strategic partnership providing priority access to DP World's global network of ports and logistics hubs.",
+    name: "DF Alliance",
+    full: "Digital Freight Alliance",
+    logo: "/company-logos/Digital_Freight_Alliance.png",
+    desc: "Membership in a global digital freight network connecting independent forwarders for wider coverage and stronger collaboration.",
   },
   {
     name: "AllForward",
