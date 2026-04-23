@@ -26,6 +26,7 @@ export const clientLogos = [
   { name: "Abou Ghaly Motors", logo: "/company-logos/Abou_Ghaly_Motors_id_I5ged4I_0.jpeg", hasLogo: true },
   { name: "Mansour Group", logo: "/company-logos/mansour.png", hasLogo: true },
   { name: "Mobica", logo: "/company-logos/mobica.jpg", hasLogo: true },
+  { name: "COFICAB", logo: "/company-logos/COFICAB.png", hasLogo: true },
   { name: "KG Mobility", logo: "/company-logos/kg-mobility.png", hasLogo: true },
   { name: "Jushi", logo: "/company-logos/jushi.png", hasLogo: true },
 ];
