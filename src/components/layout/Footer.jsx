@@ -35,8 +35,8 @@ const accreditationLogos = [
   },
   {
     label: "DF Alliance",
-    src: "/company-logos/Digital_Freight_Alliance.png",
-    className: "h-8 sm:h-9",
+    src: "/company-logos/download-idBNWckQzW-1776908347387/Digital_Freight_Alliance/Digital_Freight_Alliance_idX1R5R1cM_3.jpeg",
+    className: "h-9 sm:h-10",
   },
 ];
 
@@ -217,7 +217,7 @@ export default function Footer() {
             {accreditationLogos.map((item) => (
               <span
                 key={item.label}
-                className="inline-flex h-12 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] px-3"
+                className="inline-flex h-12 items-center justify-center rounded-lg border border-white/10 bg-white px-3 shadow-sm"
                 title={item.label}
               >
                 <img
