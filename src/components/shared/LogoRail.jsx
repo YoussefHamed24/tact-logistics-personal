@@ -15,7 +15,8 @@ function LogoRailItem({ item, accent = false }) {
             src={item.logo}
             alt={`${item.name} logo`}
             className="max-h-12 w-auto max-w-full object-contain"
-            loading="lazy"
+            loading="eager"
+            decoding="async"
           />
         </div>
       ) : (

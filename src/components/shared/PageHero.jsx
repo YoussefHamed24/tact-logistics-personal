@@ -18,6 +18,9 @@ export default function PageHero({ title, subtitle, image, breadcrumb = null }) 
           style={{ y: imgY }}
           src={image}
           alt={title}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
           className="absolute inset-0 w-full h-full object-cover opacity-[0.48] scale-110"
         />
       )}
