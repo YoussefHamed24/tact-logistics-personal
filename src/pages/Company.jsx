@@ -22,22 +22,24 @@ const networks = [
     desc: "Membership in the world's largest freight forwarding network, ensuring adherence to the highest industry standards.",
   },
   {
-    name: "DP World Alliance",
+    name: "DP World",
     full: "DP World Global Network",
     logo: "/company-logos/DP_World/DP_World_idYmx1Uuqx_2.svg",
+    logoClassName: "max-h-12",
     desc: "Strategic partnership providing priority access to DP World's global network of ports and logistics hubs.",
   },
   {
     name: "DF Alliance",
     full: "Digital Freight Alliance",
     logo: "/company-logos/Digital_Freight_Alliance.png",
-    darkLogo: true,
+    logoClassName: "max-h-[72px] max-w-[390px]",
     desc: "Membership in a global digital freight network connecting independent forwarders for wider coverage and stronger collaboration.",
   },
   {
     name: "AllForward",
     full: "AllForward Global Logistics Network",
     logo: "/company-logos/All_Forward/All_Forward_idCvYQyRyv_3.png",
+    logoClassName: "max-h-12",
     desc: "Membership in a curated network of independent freight forwarders, offering global agent coverage and collaborative solutions.",
   },
   {
@@ -87,15 +89,11 @@ export default function Company() {
                 transition={{ delay: i * 0.08 }}
                 className="bg-card border border-border/50 rounded-xl p-7 hover:border-accent/20 hover:shadow-lg transition-all"
               >
-                <div
-                  className={`flex h-16 items-center justify-start mb-5 ${
-                    n.darkLogo ? "rounded-lg bg-[hsl(218,62%,8%)] px-3" : "px-1"
-                  }`}
-                >
+                <div className="flex h-16 items-center justify-start px-1 mb-5">
                   <img
                     src={n.logo}
                     alt={`${n.name} logo`}
-                    className={`${n.darkLogo ? "max-h-9" : "max-h-10"} w-auto max-w-full object-contain`}
+                    className={`${n.logoClassName ?? "max-h-10"} w-auto max-w-full object-contain`}
                     loading="lazy"
                   />
                 </div>
