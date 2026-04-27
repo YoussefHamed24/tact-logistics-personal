@@ -6,32 +6,32 @@ const regions = [
   {
     name: "Africa",
     desc: "Strategic gateway through Egypt connecting North & Sub-Saharan Africa.",
-    img: "/service-images/pexels-mukula-igavinchi-443985808-15496542.jpg",
+    img: "/service-images/optimized/africa-lanes.webp",
     position: "center 68%",
     detail: "Alexandria, Port Said, Damietta, Suez — connecting to Mombasa, Lagos, Durban and beyond.",
   },
   {
     name: "Europe",
     desc: "Direct lanes to all major European ports and inland destinations.",
-    img: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1000&q=90",
+    img: "/service-images/optimized/europe-lanes.webp",
     detail: "Rotterdam, Hamburg, Antwerp, Piraeus, Barcelona — weekly sailings on all major routes.",
   },
   {
     name: "Middle East",
     desc: "Extensive coverage of GCC, Levant, and wider MENA region.",
-    img: "https://images.unsplash.com/photo-1512632578888-169bbbc64f33?w=1000&q=90",
+    img: "/service-images/optimized/middle-east-lanes.webp",
     detail: "Jeddah, Dubai, Aqaba, Beirut, Kuwait — air & sea with priority carrier access.",
   },
   {
     name: "Asia",
     desc: "Strong connections to China, India, Southeast Asia, and beyond.",
-    img: "/service-images/asia-singapore-skyline.jpg",
+    img: "/service-images/optimized/asia-lanes.webp",
     detail: "Shanghai, Singapore, Mumbai, Hong Kong — direct FCL & LCL weekly services.",
   },
   {
     name: "Americas",
     desc: "North & South American routes via transshipment hubs.",
-    img: "https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?w=1000&q=90",
+    img: "/service-images/optimized/americas-lanes.webp",
     detail: "New York, Houston, Santos, Cartagena — reliable transshipment through major hubs.",
   },
 ];

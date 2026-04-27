@@ -14,8 +14,11 @@ function LogoRailItem({ item, accent = false }) {
           <img
             src={item.logo}
             alt={`${item.name} logo`}
+            width={item.width}
+            height={item.height}
             className="max-h-12 w-auto max-w-full object-contain"
-            loading="eager"
+            loading="lazy"
+            fetchPriority="low"
             decoding="async"
           />
         </div>

@@ -4,11 +4,11 @@ import PageHero from "../../components/shared/PageHero";
 import SectionHeading from "../../components/shared/SectionHeading";
 import CTASection from "../../components/home/CTASection";
 
-const HERO_IMG = "https://images.unsplash.com/photo-1553413077-190dd305871c?w=1920&q=95";
-const STRIP_IMG = "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=1920&q=90";
+const HERO_IMG = "/service-images/optimized/warehousing.webp";
+const STRIP_IMG = "/service-images/optimized/warehousing-strip.webp";
 const EXTRA_IMGS = [
-  "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=900&q=85",
-  "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=900&q=85",
+  "/service-images/optimized/warehouse-gallery-1.webp",
+  "/service-images/optimized/warehouse-gallery-2.webp",
 ];
 
 const features = [

@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const FEATURE_IMAGE = "/service-images/sea-freight-gallery-1.jpg";
+const FEATURE_IMAGE = "/service-images/optimized/sea-freight-gallery-1.webp";
 
 const pillars = [
   { title: "Supply Chain Simplification", desc: "We streamline complex logistics into a single, cohesive operation." },

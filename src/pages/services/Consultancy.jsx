@@ -4,8 +4,8 @@ import PageHero from "../../components/shared/PageHero";
 import SectionHeading from "../../components/shared/SectionHeading";
 import CTASection from "../../components/home/CTASection";
 
-const HERO_IMG = "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=1920&q=95";
-const STRIP_IMG = "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1920&q=90";
+const HERO_IMG = "/service-images/optimized/consultancy.webp";
+const STRIP_IMG = "/service-images/optimized/consultancy-strip.webp";
 
 const features = [
   { title: "Trade Advisory", desc: "Expert guidance on international trade regulations, market entry strategies, and cross-border compliance." },

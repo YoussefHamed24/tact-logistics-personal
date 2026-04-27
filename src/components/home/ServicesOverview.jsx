@@ -9,49 +9,49 @@ const services = [
     title: "Sea Freight",
     desc: "FCL, LCL & oversized cargo across all major global lanes.",
     path: "/services/sea-freight",
-    img: "/service-images/sea-freight-hero.jpg",
+    img: "/service-images/optimized/sea-freight-hero.webp",
   },
   {
     title: "Air Freight",
     desc: "Express, consolidated & time-critical air cargo solutions.",
     path: "/services/air-freight",
-    img: "/service-images/air-freight-hero.jpg",
+    img: "/service-images/optimized/air-freight-hero.webp",
   },
   {
     title: "Inland Transport",
     desc: "Nationwide trucking with full GPS visibility & tracking.",
     path: "/services/inland-transport",
-    img: "/service-images/inland-transport-hero.jpg",
+    img: "/service-images/optimized/inland-transport-hero.webp",
   },
   {
     title: "Customs Clearance",
     desc: "Expert documentation, compliance & fast-track clearance.",
     path: "/services/customs-clearance",
-    img: "/service-images/customs-clearance-hero.jpg",
+    img: "/service-images/optimized/customs-clearance-hero.webp",
   },
   {
     title: "Warehousing",
     desc: "Bonded warehouses, inventory management & distribution.",
     path: "/services/warehousing",
-    img: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=85",
+    img: "/service-images/optimized/warehousing.webp",
   },
   {
     title: "Project Logistics",
     desc: "Complex, large-scale project cargo & heavy-lift solutions.",
     path: "/services/project-logistics",
-    img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=85",
+    img: "/service-images/optimized/project-logistics.webp",
   },
   {
     title: "RoRo Services",
     desc: "Roll-on/Roll-off transport for vehicles & heavy machinery.",
     path: "/services/roro",
-    img: "/service-images/RoRo.jpeg",
+    img: "/service-images/optimized/roro-card.webp",
   },
   {
     title: "Consultancy",
     desc: "Trade advisory, supply chain optimization & compliance.",
     path: "/services/consultancy",
-    img: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=800&q=85",
+    img: "/service-images/optimized/consultancy.webp",
   },
 ];
 
@@ -92,8 +92,8 @@ export default function ServicesOverview() {
                   <img
                     src={svc.img}
                     alt={svc.title}
-                    loading={index < 4 ? "eager" : "lazy"}
-                    fetchPriority={index < 2 ? "high" : "auto"}
+                    loading="lazy"
+                    fetchPriority="auto"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-primary/10 to-transparent" />

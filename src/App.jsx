@@ -1,28 +1,36 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import PageNotFound from './lib/PageNotFound';
+const PageNotFound = lazy(() => import('./lib/PageNotFound'));
 
 import Layout from './components/layout/Layout';
 
 import Home from './pages/Home';
-import About from './pages/About';
-import Services from './pages/Services';
-import SeaFreight from './pages/services/SeaFreight';
-import AirFreight from './pages/services/AirFreight';
-import InlandTransport from './pages/services/InlandTransport';
-import CustomsClearance from './pages/services/CustomsClearance';
-import WarehousingPage from './pages/services/Warehousing';
-import ProjectLogistics from './pages/services/ProjectLogistics';
-import RoRo from './pages/services/RoRo';
-import Consultancy from './pages/services/Consultancy';
-import WhyAndIndustries from './pages/WhyAndIndustries';
-import Company from './pages/Company';
-import Contact from './pages/Contact';
-import Quote from './pages/Quote';
-import Careers from './pages/Careers';
+const About = lazy(() => import('./pages/About'));
+const Services = lazy(() => import('./pages/Services'));
+const SeaFreight = lazy(() => import('./pages/services/SeaFreight'));
+const AirFreight = lazy(() => import('./pages/services/AirFreight'));
+const InlandTransport = lazy(() => import('./pages/services/InlandTransport'));
+const CustomsClearance = lazy(() => import('./pages/services/CustomsClearance'));
+const WarehousingPage = lazy(() => import('./pages/services/Warehousing'));
+const ProjectLogistics = lazy(() => import('./pages/services/ProjectLogistics'));
+const RoRo = lazy(() => import('./pages/services/RoRo'));
+const Consultancy = lazy(() => import('./pages/services/Consultancy'));
+const WhyAndIndustries = lazy(() => import('./pages/WhyAndIndustries'));
+const Company = lazy(() => import('./pages/Company'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Quote = lazy(() => import('./pages/Quote'));
+const Careers = lazy(() => import('./pages/Careers'));
+
+function DeferredPage({ children }) {
+  return (
+    <Suspense fallback={<div className="min-h-[40vh] bg-background" />}>
+      {children}
+    </Suspense>
+  );
+}
 
 function App() {
   return (
@@ -31,23 +39,23 @@ function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/services/sea-freight" element={<SeaFreight />} />
-            <Route path="/services/air-freight" element={<AirFreight />} />
-            <Route path="/services/inland-transport" element={<InlandTransport />} />
-            <Route path="/services/customs-clearance" element={<CustomsClearance />} />
-            <Route path="/services/warehousing" element={<WarehousingPage />} />
-            <Route path="/services/project-logistics" element={<ProjectLogistics />} />
-            <Route path="/services/roro" element={<RoRo />} />
-            <Route path="/services/consultancy" element={<Consultancy />} />
-            <Route path="/why-us" element={<WhyAndIndustries />} />
-            <Route path="/company" element={<Company />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/quote" element={<Quote />} />
-            <Route path="/careers" element={<Careers />} />
+            <Route path="/about" element={<DeferredPage><About /></DeferredPage>} />
+            <Route path="/services" element={<DeferredPage><Services /></DeferredPage>} />
+            <Route path="/services/sea-freight" element={<DeferredPage><SeaFreight /></DeferredPage>} />
+            <Route path="/services/air-freight" element={<DeferredPage><AirFreight /></DeferredPage>} />
+            <Route path="/services/inland-transport" element={<DeferredPage><InlandTransport /></DeferredPage>} />
+            <Route path="/services/customs-clearance" element={<DeferredPage><CustomsClearance /></DeferredPage>} />
+            <Route path="/services/warehousing" element={<DeferredPage><WarehousingPage /></DeferredPage>} />
+            <Route path="/services/project-logistics" element={<DeferredPage><ProjectLogistics /></DeferredPage>} />
+            <Route path="/services/roro" element={<DeferredPage><RoRo /></DeferredPage>} />
+            <Route path="/services/consultancy" element={<DeferredPage><Consultancy /></DeferredPage>} />
+            <Route path="/why-us" element={<DeferredPage><WhyAndIndustries /></DeferredPage>} />
+            <Route path="/company" element={<DeferredPage><Company /></DeferredPage>} />
+            <Route path="/contact" element={<DeferredPage><Contact /></DeferredPage>} />
+            <Route path="/quote" element={<DeferredPage><Quote /></DeferredPage>} />
+            <Route path="/careers" element={<DeferredPage><Careers /></DeferredPage>} />
           </Route>
-          <Route path="*" element={<PageNotFound />} />
+          <Route path="*" element={<DeferredPage><PageNotFound /></DeferredPage>} />
         </Routes>
       </Router>
       <Toaster />

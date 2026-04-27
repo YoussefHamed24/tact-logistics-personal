@@ -10,7 +10,7 @@ const stats = [
   { num: "6", label: "Continents Served" },
 ];
 
-const VIDEO_POSTER_URL = "/service-images/sea-freight-hero.jpg?v=20260427-1";
+const VIDEO_POSTER_URL = "/service-images/optimized/sea-freight-hero.webp";
 
 export default function HeroSection() {
   const sectionRef = useRef(null);

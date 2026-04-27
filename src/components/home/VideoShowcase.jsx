@@ -3,17 +3,17 @@ import { motion } from "framer-motion";
 
 const highlights = [
   {
-    image: "/service-images/sea-freight-strip.jpg",
+    image: "/service-images/optimized/sea-freight-strip.webp",
     label: "Sea Freight",
     desc: "Container handling and dependable ocean capacity across major trade lanes.",
   },
   {
-    image: "/service-images/air-freight-hero.jpg",
+    image: "/service-images/optimized/air-freight-hero.webp",
     label: "Air Freight",
     desc: "Priority air cargo for time-sensitive shipments and high-value moves.",
   },
   {
-    image: "/service-images/inland-transport-hero.jpg",
+    image: "/service-images/optimized/inland-transport-hero.webp",
     label: "Inland Transport",
     desc: "Road coverage across Egypt with coordinated door-to-door execution.",
   },

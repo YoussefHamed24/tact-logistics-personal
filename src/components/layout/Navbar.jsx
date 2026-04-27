@@ -96,6 +96,8 @@ export default function Navbar() {
             <img
               src="/Tact Freight - Logo - Wide - 3.png"
               alt="Tact Freight"
+              width="2000"
+              height="486"
               className="h-9 sm:h-11 w-auto max-w-[210px] sm:max-w-none object-contain xl:h-12"
             />
           </Link>
