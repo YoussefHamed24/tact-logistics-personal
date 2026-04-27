@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Phone, ChevronDown } from "lucide-react";
@@ -10,78 +10,25 @@ const stats = [
   { num: "6", label: "Continents Served" },
 ];
 
-const VIDEO_URL = "/seamless-hero.mp4?v=20260421-1";
 const VIDEO_POSTER_URL = "/service-images/sea-freight-hero.jpg?v=20260427-1";
 
 export default function HeroSection() {
   const sectionRef = useRef(null);
-  const videoRef = useRef(null);
-  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
-  const [isVideoReady, setIsVideoReady] = useState(false);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
-  useEffect(() => {
-    let timeoutId;
-    let idleId;
-
-    const startVideoLoad = () => setShouldLoadVideo(true);
-
-    if ("requestIdleCallback" in window) {
-      idleId = window.requestIdleCallback(startVideoLoad, { timeout: 1200 });
-    } else {
-      timeoutId = window.setTimeout(startVideoLoad, 250);
-    }
-
-    return () => {
-      if (idleId) {
-        window.cancelIdleCallback(idleId);
-      }
-      if (timeoutId) {
-        window.clearTimeout(timeoutId);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!shouldLoadVideo || !videoRef.current) {
-      return;
-    }
-
-    videoRef.current.load();
-    const playPromise = videoRef.current.play();
-
-    if (playPromise?.catch) {
-      playPromise.catch(() => {});
-    }
-  }, [shouldLoadVideo]);
-
   return (
     <section ref={sectionRef} className="relative min-h-screen flex flex-col overflow-hidden bg-primary">
-      {/* Video background with parallax */}
+      {/* Hero image with parallax */}
       <motion.div style={{ y }} className="absolute inset-0">
         <img
           src={VIDEO_POSTER_URL}
           alt=""
           aria-hidden="true"
           fetchPriority="high"
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${isVideoReady ? "opacity-0" : "opacity-100"}`}
+          className="absolute inset-0 h-full w-full object-cover"
         />
-        <video
-          ref={videoRef}
-          key={VIDEO_URL}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster={VIDEO_POSTER_URL}
-          onLoadedData={() => setIsVideoReady(true)}
-          className={`w-full h-full object-cover transition-opacity duration-700 ${isVideoReady ? "opacity-100" : "opacity-0"}`}
-        >
-          {shouldLoadVideo ? <source src={VIDEO_URL} type="video/mp4" /> : null}
-        </video>
       </motion.div>
 
       {/* Layered gradients */}

@@ -4,37 +4,25 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import { ArrowRight, Mail } from "lucide-react";
 import { useIsMobile } from "../../hooks/use-mobile";
 
-const VIDEO_URL = "https://videos.pexels.com/video-files/3735869/3735869-uhd_2560_1440_25fps.mp4";
 const POSTER = "https://images.unsplash.com/photo-1518493870346-7e73ecddd93b?w=1800&q=90";
 
 export default function CTASection() {
   const ref = useRef(null);
   const isMobile = useIsMobile();
   const prefersReducedMotion = useReducedMotion();
-  const showVideo = !isMobile && !prefersReducedMotion;
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.1, 1.05, 1.0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], isMobile || prefersReducedMotion ? [1, 1, 1] : [1.1, 1.05, 1.0]);
 
   return (
     <section ref={ref} className="relative overflow-hidden">
-      {/* Parallax video */}
+      {/* Parallax image */}
       <motion.div style={{ scale }} className="absolute inset-0">
-        {showVideo ? (
-          <video
-            autoPlay muted loop playsInline preload="metadata"
-            poster={POSTER}
-            className="w-full h-full object-cover"
-          >
-            <source src={VIDEO_URL} type="video/mp4" />
-          </video>
-        ) : (
-          <img
-            src={POSTER}
-            alt=""
-            loading="lazy"
-            className="w-full h-full object-cover"
-          />
-        )}
+        <img
+          src={POSTER}
+          alt=""
+          loading="lazy"
+          className="w-full h-full object-cover"
+        />
       </motion.div>
 
       {/* Gradient overlay */}
