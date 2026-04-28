@@ -1,1 +1,18 @@
+/# Legacy URL redirects
+/about-us /about 301
+/about-us/ /about 301
+/contact-us /contact 301
+/contact-us/ /contact 301
+/our-services /services 301
+/our-services/ /services 301
+/services/ocean-freight /services/sea-freight 301
+/services/ocean-freight/ /services/sea-freight 301
+/services/air-freight /services/air-freight 301
+/services/air-freight/ /services/air-freight 301
+/services/road-freight /services/inland-transport 301
+/services/road-freight/ /services/inland-transport 301
+/services/custom-clearance /services/customs-clearance 301
+/services/custom-clearance/ /services/customs-clearance 301
+/tracking /contact 301
+/tracking/ /contact 301
 /* /index.html 200
